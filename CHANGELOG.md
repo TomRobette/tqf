@@ -3,6 +3,25 @@ CHANGELOG
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
 
+## [v0.1.3] - (06-01-2021)
+
+### Ajouté
+- Ajout du lien vers la page admin dans le footer
+- Ajout des Cards dans la page d'accueil
+- Ajout des couvertures de test
+- Ajout d'un style CSS dans base afin d'éviter qu'un texte soit souligné lorsqu'il est survolé
+
+### Modifié
+- Déplacement des élèments de connexion/deconnexion/inscription vers le footer
+- Déplacement du footer dans un bloc TWIG du même nom
+- Cards rendue cliquables
+- Refonte du style des Cards
+- Transformation du style Bootswatch de United en Lux
+- Changement de couleur de la barre nav en dark plutôt que primary
+
+### Réglé
+- Affichage des icônes de réseaux sociaux
+
 ## [v0.1.2] - (06-01-2021)
 
 ### Ajouté
