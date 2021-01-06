@@ -1,6 +1,18 @@
 CHANGELOG
 =========
-Ici sont notées les ajouts, modifications et réglages de bugs selon les versions.
+Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
+
+
+## [v0.1.2] - (06-01-2021)
+
+### Ajouté
+- Ajout d'un footer
+- Ajout d'un élèment style CSS dans base.html.twig pour le style du footer
+
+### Modifié
+- Déplacement des élèments "À propos", "Autre fonds", "Liens", "Chronique", "Nous contacter" de la barre de navigation vers le footer
+
+### Réglé
 
 ## [v0.1.1] - (06-01-2021)
 
