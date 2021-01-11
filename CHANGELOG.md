@@ -3,6 +3,16 @@ CHANGELOG
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
 
+## [v0.1.4] - (11-01-2021)
+
+### Ajouté
+- Ajout de l'entité Genre
+- Ajout de l'entité Auteur
+
+### Modifié
+
+### Réglé
+
 ## [v0.1.3] - (06-01-2021)
 
 ### Ajouté
