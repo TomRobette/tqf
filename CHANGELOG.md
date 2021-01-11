@@ -8,6 +8,8 @@ Ici sont notés les ajouts, modifications et réglages de bugs selon les version
 ### Ajouté
 - Ajout de l'entité Genre
 - Ajout de l'entité Auteur
+- Ajout de l'entité Oeuvre
+- Création de la migration
 
 ### Modifié
 
