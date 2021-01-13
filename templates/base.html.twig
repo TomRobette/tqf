@@ -177,7 +177,7 @@
 				<div class="collapse navbar-collapse" id="navbarColor01">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link text-light" href="#">
+							<a class="nav-link text-light" href="{{ path('accueil')}}">
 								<span class="material-icons md-48">home</span>
 							</a>
 						</li>
@@ -286,15 +286,15 @@
 									</a>
 								</li>
 							{% endif %}
-							{# <li>
-																											<a href="#">4</a>
-																										</li>
-																										<li>
-																											<a href="#">5</a>
-																										</li>
-																										<li>
-																											<a href="#">6</a>
-																										</li> #}
+							<li>
+								<a href="{{ path('ajoutGenre')}}">Ajout Genre</a>
+							</li>
+							<li>
+								<a href="{{ path('listeGenres')}}">Liste Genres</a>
+							</li>
+							<li>
+								<a href="#">6</a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -310,20 +310,20 @@
 								</a>
 							</li>
 							{# <li>
-															<a class="twitter" href="#">
-																<i class="fa fa-twitter"></i>
-															</a>
-														</li>
-														<li>
-															<a class="dribbble" href="#">
-																<i class="fa fa-dribbble"></i>
-															</a>
-														</li>
-														<li>
-															<a class="linkedin" href="#">
-																<i class="fa fa-linkedin"></i>
-															</a>
-														</li> #}
+																						<a class="twitter" href="#">
+																							<i class="fa fa-twitter"></i>
+																						</a>
+																					</li>
+																					<li>
+																						<a class="dribbble" href="#">
+																							<i class="fa fa-dribbble"></i>
+																						</a>
+																					</li>
+																					<li>
+																						<a class="linkedin" href="#">
+																							<i class="fa fa-linkedin"></i>
+																						</a>
+																					</li> #}
 						</ul>
 
 						<form class="form-inline my-2 my-lg-0">

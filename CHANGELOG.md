@@ -2,6 +2,24 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.1.5] - (13-01-2021)
+
+### Ajouté
+- Ajout des formulaires AjoutGenre et AjoutAuteur
+- Ajout du contrôleur Genre
+- Ajout de la vue ajoutGenre
+- Ajout temporaire d'un lien vers l'ajout de Genre
+- Ajout d'une partie listeGenres dans GenreController
+- Ajout d'une vue listeGenres
+
+### Modifié
+- Changement du terme "Envoyé" de ajoutGenre en "Enregistrer"
+- Insertion d'un pipe dans les titres pour améliorer le visuel et la compréhension
+
+### Réglé
+- Ajout des "use" manquants dans GenreController.php
+- Ajout du bloc "parent" de TWIG du titre dans index.html.twig, ainsi que de celui du body en plus dans ajout.html.twig
+- Correction du corps TWIG de listeGenre de "content" en body
 
 ## [v0.1.4] - (11-01-2021)
 
