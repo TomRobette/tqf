@@ -2,6 +2,20 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.1.6] - (13-01-2021)
+
+### Ajouté
+- Ajout du contrôleur Auteur
+- Ajout de l'entité Fichier
+
+### Modifié
+- Remplacement dans Oeuvre de couverture d'un String à une liaison vers Fichier
+- Remplacement dans Auteur de image d'un String à une liaison vers Fichier
+- Remplacement du formulaire AjoutAuteur afin d'y appliquer les modifications
+
+### Réglé
+- Correction du problème graphique de la vue listeGenre, il manquait la fin de balise </table>
+
 ## [v0.1.5] - (13-01-2021)
 
 ### Ajouté

@@ -20,8 +20,8 @@ class AjoutAuteurType extends AbstractType
             ->add('bioLongue')
             ->add('oeuvresExt')
             ->add('liensWeb')
-            ->add('image')
             ->add('oeuvres')
+            ->add('image')
         ;
     }
 

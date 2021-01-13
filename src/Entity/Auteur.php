@@ -60,14 +60,14 @@ class Auteur
     private $liensWeb;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Oeuvre::class, mappedBy="auteurs")
      */
     private $oeuvres;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Fichier::class, inversedBy="auteurs")
+     */
+    private $image;
 
     public function __construct()
     {
@@ -175,18 +175,6 @@ class Auteur
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Oeuvre[]
      */
@@ -210,6 +198,18 @@ class Auteur
         if ($this->oeuvres->removeElement($oeuvre)) {
             $oeuvre->removeAuteur($this);
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?Fichier
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Fichier $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

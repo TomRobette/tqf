@@ -70,11 +70,6 @@ class Oeuvre
     private $extrait;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $couverture;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Genre::class, inversedBy="oeuvres")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -84,6 +79,11 @@ class Oeuvre
      * @ORM\ManyToMany(targetEntity=Auteur::class, inversedBy="oeuvres")
      */
     private $auteurs;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Fichier::class, inversedBy="oeuvres")
+     */
+    private $couverture;
 
     public function __construct()
     {
@@ -215,18 +215,6 @@ class Oeuvre
         return $this;
     }
 
-    public function getCouverture(): ?string
-    {
-        return $this->couverture;
-    }
-
-    public function setCouverture(?string $couverture): self
-    {
-        $this->couverture = $couverture;
-
-        return $this;
-    }
-
     public function getGenre(): ?Genre
     {
         return $this->genre;
@@ -259,6 +247,18 @@ class Oeuvre
     public function removeAuteur(Auteur $auteur): self
     {
         $this->auteurs->removeElement($auteur);
+
+        return $this;
+    }
+
+    public function getCouverture(): ?Fichier
+    {
+        return $this->couverture;
+    }
+
+    public function setCouverture(?Fichier $couverture): self
+    {
+        $this->couverture = $couverture;
 
         return $this;
     }
