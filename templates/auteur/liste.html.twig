@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent()}}| Auteurs
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<h1 class="text-center text-primary p-4">Liste des Auteurs</h1>
+		</div>
+		<div class="row row-cols-1 row-cols-md-6 g-4">
+			{% set i = 0 %}
+			{% for auteur in auteur %}
+			<div class="col">
+			<a class="card-linker" href="{{path('auteur',{'id':auteur.id})}}">
+				<div class="card">
+					<img src="{{images[i]}}" class="card-img-top" alt="..."/>
+					<div class="card-body">
+						<h5 class="card-title">{{auteur.prenom|capitalize}}
+							{{auteur.nom|upper}}</h5>
+							<a href="{{path('listeAuteurs',{'supp':auteur.id})}}">
+								<span class="material-icons text-dark" title="Supprimer l'auteur de la base de données">delete</span>
+							</a>
+							<a href="#">
+								<span class="material-icons text-dark" title="Modifier l'auteur dans la base de données">create</span>
+							</a>
+					</div>
+				</div>
+			</a>
+
+		</div>
+					{% set i = i + 1 %}
+			{% endfor %}
+		</div>		
+	</div>
+{% endblock %}

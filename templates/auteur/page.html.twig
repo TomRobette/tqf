@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}| Page Auteur
+{% endblock %}
+
+{% block body %}
+	{{parent()}}
+	<div class="container-fluid">
+		<div class="card mb-3">
+			<div class="row no-gutters">
+				<div class="col-md-4">
+					<img src="{{base64}}" class="card-img" alt="...">
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h3 class="card-title text-center">{{auteur.prenom|capitalize}}
+							{{auteur.nom|upper}}</h3>
+						<p class="card-text">Né(e) le
+							{{auteur.dateNaissance|date('d-m-Y')}}</p>
+						{% if auteur.dateDeces is not null %}
+							<p class="card-text">Date de décès :
+								{{auteur.dateDeces|date('d-m-Y')}}</p>
+						{% endif %}
+						{% if auteur.bioLongue is not null %}
+							<h4 class="card-title text-center">Biographie<h4>
+									<p class="card-text">{{auteur.bioLongue}}</p>
+								{% elseif auteur.bioCourte is not null %}
+									<h4 class="card-title text-center">Biographie<h4>
+											<p class="card-text">{{auteur.bioCourte}}</p>
+										{% else %}
+											<p class="card-text-muted">Aucune biographie n'est disponible pour le moment.</p>
+										{% endif %}
+
+										<br>
+										{% if auteur.oeuvres|length > 0 %}
+											<ul class="nav nav-pills flex-column">
+												{% for i in auteur.oeuvres %}
+													<li class="nav-item">
+														<a class="nav-link" href="#">{{i.titre}}</a>
+													</li>
+												{% endfor %}
+											</ul>
+										{% endif %}
+
+                                        {% if auteur.oeuvresExt is not null %}
+							                <h4 class="card-title text-center">Autres oeuvres<h4>
+									        <p class="card-text">{{auteur.oeuvresExt}}</p>
+										{% endif %}
+
+                                        {% if auteur.liensWeb is not null %}
+							                <h4 class="card-title text-center">Liens<h4>
+									        <p class="card-text">{{auteur.liensWeb}}</p>
+                                        {% endif %}
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endblock %}

@@ -45,7 +45,7 @@ class AuteurController extends AbstractController
                 }
 
                 $this->addFlash('notice','Auteur ajouté');
-                return $this->redirectToRoute('ajoutAuteur');        
+                return $this->redirectToRoute('accueil');        
             }   
           }
         return $this->render('auteur/ajout.html.twig', [
@@ -79,10 +79,50 @@ class AuteurController extends AbstractController
             $this->redirectToRoute('listeAuteurs');
         }
     
-        $auteur = $repoAuteur->findBy(array(), array('id'=>'ASC'));
+        $auteur = $repoAuteur->findBy(array(), array('nom'=>'ASC'));
+        $images = array();
+        foreach($auteur as $i){
+            if($i->getImage()==null){
+                $path = $this->getParameter('auteur_directory').'/default.png';
+            }else{
+                $path = $this->getParameter('auteur_directory').'/'.$i->getImage()->getNom();
+            }
+            $data = file_get_contents($path);
+            $base64 = 'data:image/png;base64,'.base64_encode($data);
+            array_push($images,$base64);
+        }
             
         return $this->render('auteur/liste.html.twig', [
-            'auteur'=>$auteur
+            'auteur'=>$auteur,
+            'images'=>$images
+        ]);
+    }
+
+    /**
+     * @Route("/auteur/{id}", name="auteur", requirements={"id"="\d+"})
+     */
+    public function auteur(int $id, Request $request)
+    {
+        $em = $this->getDoctrine();
+        $repoAut = $em->getRepository(Auteur::class);
+        $auteur = $repoAut->find($id);
+
+        if($auteur==null){
+            $this->addFlash('notice','Cette page n\'existe pas');
+            return $this->redirectToRoute('accueil');   
+        }
+
+        if($auteur->getImage()==null){
+            $path = $this->getParameter('auteur_directory').'/default.png';
+        }else{
+            $path = $this->getParameter('auteur_directory').'/'.$auteur->getImage()->getNom();
+        }
+        $data = file_get_contents($path);
+        $base64 = 'data:image/png;base64,'.base64_encode($data);
+
+        return $this->render('auteur/page.html.twig', [               
+            'auteur'=>$auteur,
+            'base64'=>$base64
         ]);
     }
 }

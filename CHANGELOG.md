@@ -2,6 +2,21 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.1.9] - (15-01-2021)
+
+### Ajouté
+- Ajout du chemin auteur dans AuteurController.php
+- Ajout de la vue page dans auteur/. Elle permet de voir la page de l'auteur
+- Ajout de la vue listeAuteur
+
+### Modifié
+- Mise en place du lien vers listeAuteur
+
+### Réglé
+- Apostrophe manquante dans dateDecesAuteur dans le formulaire de la vue ajoutAuteur
+- Correction de l'obtention des noms de fichiers d'image
+- Correction du "content" de page en "body"
+
 ## [v0.1.8] - (15-01-2021)
 
 ### Ajouté
