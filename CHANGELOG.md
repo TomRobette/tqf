@@ -2,6 +2,22 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.1.8] - (15-01-2021)
+
+### Ajouté
+- Ajout d'un lien temporaire vers ajoutAuteur
+- Création de la vue ajoutAuteur
+- Ajout de badges avec la fonction form_help de SYMFONY pour signaler la nécessité des champs
+
+### Modifié
+- Typage des variables dans AjoutAuteurType.php
+- Mise en place du contrôleur de ajoutAuteur
+
+### Réglé
+- Authentification utilisateur temporairement retirée de ajoutAuteur
+- Le continuum des années pour l'insertion se limite au 5e sièce de notre ère.
+- Correction des bugs de ajoutAuteur
+
 ## [v0.1.6] - (13-01-2021)
 
 ### Ajouté

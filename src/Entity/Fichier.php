@@ -51,8 +51,6 @@ class Fichier
 
     public function __construct()
     {
-        $this->themes = new ArrayCollection();
-        $this->telechargements = new ArrayCollection();
         $this->oeuvres = new ArrayCollection();
         $this->auteurs = new ArrayCollection();
     }

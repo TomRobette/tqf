@@ -202,12 +202,12 @@ class Auteur
         return $this;
     }
 
-    public function getImage(): ?Fichier
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(?Fichier $image): self
+    public function setImage($image)
     {
         $this->image = $image;
 
