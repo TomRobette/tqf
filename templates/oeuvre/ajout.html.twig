@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}| Ajout Oeuvre
+{% endblock %}
+
+
+{% block body %}
+{{parent()}}
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<h1 class="text-center text-primary p-4">Ajout d'une Oeuvre</h1>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-8 bg-white p-4 m-0 text-dark">
+			{{ form_start(form) }}
+			<div class="form-group">
+				{{ form_label(form.titre, 'Le titre de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.titre) }}</span></small>
+				{{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.noteStatut, 'Le statut de l\'oeuvre (Disponible, rupture de stock, chez nos partenaires, etc)', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.noteStatut) }}</span></small>
+				{{ form_widget(form.noteStatut, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.dimensions, 'Les dimensions de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.dimensions) }}</span></small>
+				{{ form_widget(form.dimensions, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.isbn, 'L\'ISBN de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.dimensions) }}</span></small>
+				{{ form_widget(form.isbn, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.nbPages, 'Le nombre de pages de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.nbPages) }}</span></small>
+				{{ form_widget(form.nbPages, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.datePublication, 'Date de publication de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.datePublication) }}</span></small>
+				{{ form_widget(form.datePublication, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.note, 'Une note particulière', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				{{ form_widget(form.note, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.prix, 'Le prix de l\'oeuvre (0 si gratuite)', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.prix) }}</span></small>
+				{{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.description, 'La description de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.description) }}</span></small>
+				{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.extrait, 'Un extrait de l\'oeuvre (À laisser vide s\'il n\'y en a pas)', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				{{ form_widget(form.extrait, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.genre, 'Le genre de l\'oeuvre (Si le genre souhaité ne se trouve pas dans cette liste, le rajouter dans ajoutGenre)', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.genre) }}</span></small>
+				{{ form_widget(form.genre, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.auteurs, 'Le ou les auteurs de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.auteurs) }}</span></small>
+				{{ form_widget(form.auteurs, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.couverture, 'La première de couverture de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}  
+				<small><span class="badge badge-info">{{ form_help(form.couverture) }}</span></small>                  
+                {{ form_widget(form.couverture, {'attr': {'class': 'form-control'}}) }}       
+            </div>
+			<div class="form-group mx-auto text-center">
+				{{ form_widget(form.send, { 'label': "Enregistrer", 'attr': {'class': 'btn font-weight-bold bg-primary text-white mx-auto text-center'}}) }}
+			</div>
+			{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

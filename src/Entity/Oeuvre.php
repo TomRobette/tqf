@@ -251,12 +251,12 @@ class Oeuvre
         return $this;
     }
 
-    public function getCouverture(): ?Fichier
+    public function getCouverture()
     {
         return $this->couverture;
     }
 
-    public function setCouverture(?Fichier $couverture): self
+    public function setCouverture($couverture)
     {
         $this->couverture = $couverture;
 

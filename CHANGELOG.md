@@ -2,6 +2,27 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.1.10] - (15-01-2021)+(18-01-2021)
+
+### Ajouté
+- Ajout du formulaire AjoutAuteurType
+- Ajout du contrôleur OeuvreController
+- Ajout de ajoutOeuvre dans le OeuvreController
+- Ajout de la vue ajoutOeuvre
+- Ajout de listeOeuvres et oeuvre/id/ dans OeuvreController
+
+### Modifié
+- Ajout dans le champs genre (dans AjoutAuteurType) de l'association avec l'entité
+- Typage de la variable "couverture" retiré de l'entité Oeuvre
+- Modification des champs d'entrées dans ajoutOeuvre
+- Mise en place du lien vers ajoutOeuvre
+- Ajout du champ Auteurs pour l'ajoutOeuvre
+
+### Réglé
+- Remplacement des form.variable dans les form_help de ajoutAuteur
+- Correction des appels de librairies de OeuvreController
+- Correction du bug "choice_label", il correspondait en fait à la valeur affichée DEPUIS L'ENTITÉ
+
 ## [v0.1.9] - (15-01-2021)
 
 ### Ajouté
