@@ -79,7 +79,7 @@ class OeuvreController extends AbstractController
             $this->redirectToRoute('listeOeuvres');
         }
     
-        $oeuvre = $repoOeuvre->findBy(array(), array('nom'=>'ASC'));
+        $oeuvre = $repoOeuvre->findBy(array(), array('titre'=>'ASC'));
         $images = array();
         foreach($oeuvre as $i){
             if($i->getCouverture()==null){

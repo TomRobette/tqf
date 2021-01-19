@@ -2,6 +2,26 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.1.11] - (19-01-2021)
+
+### Ajouté
+- Création de la vue listeOeuvres
+- Création de la vue pageOeuvre
+
+### Modifié
+- Mise en place du lien vers listeOeuvres
+- Ajout du lien vers l'oeuvre dans pageAuteur
+- Ajout de la librairie twig/intl-extra (pour l'affichage de l'argent)
+- Ajout d'un style particulier pour les liens entre auteurs et oeuvres
+
+### Réglé
+- Correction du tri de listeOeuvre par rapport à "titre" plutôt que "nom"
+- Correction de la virgule en trop dans la liste des auteurs de l'oeuvre
+- Ajout du h4 "oeuvre" dans pageAuteur
+- Correction de la variable oeuvre.id en i.id dans le foreach de pageAuteur
+- Correction de l'affichage de l'argent dans pageOeuvre
+- Correction de l'affichage en majuscules des paragraphes de pageAuteur et pageOeuvre
+
 ## [v0.1.10] - (15-01-2021)+(18-01-2021)
 
 ### Ajouté

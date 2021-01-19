@@ -163,6 +163,12 @@
 				.card-text {
 					color: black;
 				}
+				.lien {
+					color: #007bb6;
+				}
+				.lien:hover {
+					color: blue;
+				}
 			</style>
 		{% endblock %}
 	</head>
@@ -191,7 +197,7 @@
 						</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link text-light" href="#">
+						<a class="nav-link text-light" href="{{ path('listeOeuvres')}}">
 							Oeuvres
 						</a>
 					</li>
