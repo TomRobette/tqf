@@ -25,10 +25,10 @@
 						{% endif %}
 						{% if auteur.bioLongue is not null %}
 							<p class="card-subtitle text-center">Biographie<p>
-									<p class="card-text">{{auteur.bioLongue}}</p>
+									<p class="card-text">{{auteur.bioLongue|raw}}</p>
 								{% elseif auteur.bioCourte is not null %}
 									<p class="card-subtitle text-center">Biographie<p>
-											<p class="card-text">{{auteur.bioCourte}}</p>
+											<p class="card-text">{{auteur.bioCourte|raw}}</p>
 										{% else %}
 											<p class="card-text-muted">Aucune biographie n'est disponible pour le moment.</p>
 										{% endif %}
@@ -47,12 +47,12 @@
 
                                         {% if auteur.oeuvresExt is not null %}
 							                <p class="card-subtitle text-center">Autres oeuvres<p>
-									        <p class="card-text">{{auteur.oeuvresExt}}</p>
+									        <p class="card-text">{{auteur.oeuvresExt|raw}}</p>
 										{% endif %}
 
                                         {% if auteur.liensWeb is not null %}
 							                <p class="card-subtitle text-center">Liens<p>
-									        <p class="card-text">{{auteur.liensWeb}}</p>
+									        <p class="card-text">{{auteur.liensWeb|raw}}</p>
                                         {% endif %}
 
 

@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Genre;
 use App\Entity\Auteur;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class AjoutOeuvreType extends AbstractType
 {
@@ -55,11 +56,11 @@ class AjoutOeuvreType extends AbstractType
                 'required' => true,
                 'help' => 'Obligatoire',
             ])
-            ->add('description', TextType::class, [
+            ->add('description', CKEditorType::class, [
                 'required' => true,
                 'help' => 'Obligatoire',
             ])
-            ->add('extrait', TextType::class, [
+            ->add('extrait', CKEditorType::class, [
                 'required' => false,
             ])
             ->add('genre', EntityType::class, [

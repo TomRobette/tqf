@@ -1,6 +1,26 @@
 CHANGELOG
 =========
-Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
+Ici sont notés les ajouts, modifications et réglages de bugs selon les versions. composer require friendsofsymfony/ckeditor-bundle
+
+## [v0.2.0] - (20-01-2021)
+
+### Ajouté
+- Installation de php7.3-zip
+- Installation du bundle ckeditor
+- Installation de ckeditor
+- Installation des assets de ckeditor
+- Ajout d'un répertoire ckeditor dans uploads afin d'y diriger les fichiers des composants textes (images, vidéos, etc)
+- Ajout d'une nouvelle route ckeditor_directory dans services.yaml
+- Création d'un fichier config.yml dans config/
+
+### Modifié
+- Modification de config/packages/twig.yaml
+- Modification des champs "extrait" et "description" de AjoutOeuvreType pour ckeditor
+- Mise en place en raw des balises d'extrait et de description dans pageOeuvre
+- Modification des champs "bioCourte", "bioLongue", "oeuvresExt", et "liensWeb" de AjoutAuteurType pour ckeditor
+- Mise en place en raw des balises bioCourte, bioLongue, oeuvresExt et de liensWeb dans pageAuteur
+
+### Réglé
 
 ## [v0.1.11] - (19-01-2021)
 

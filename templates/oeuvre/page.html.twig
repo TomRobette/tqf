@@ -44,12 +44,12 @@
 						<p class="card-text">{{oeuvre.note}}</p>
 						<p class="card-text">{{oeuvre.prix|format_currency('EUR',{rounding_mode: 'floor'})}}</p>
 						<p class="card-subtitle text-center">Description<p>
-						<p class="card-text">{{oeuvre.description}}</p>
+						<p class="card-text">{{oeuvre.description|raw}}</p>
 
 						{% if oeuvre.extrait is not null %}
 							<br>
 							<p class="card-subtitle text-center">Extrait<p>
-							<p class="card-text">{{oeuvre.extrait}}</p>
+							<p class="card-text">{{oeuvre.extrait|raw}}</p>
 						{% endif %}
 					</div>
 				</div>

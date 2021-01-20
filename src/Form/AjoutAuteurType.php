@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class AjoutAuteurType extends AbstractType
 {
@@ -33,17 +34,17 @@ class AjoutAuteurType extends AbstractType
                 'required' => false,
                 'years' => range(date('Y')-1500, date('Y')),
             ])
-            ->add('bioCourte', TextType::class, [
+            ->add('bioCourte', CKEditorType::class, [
                 'required' => true,
                 'help' => 'Obligatoire',
             ])
-            ->add('bioLongue', TextType::class, [
+            ->add('bioLongue', CKEditorType::class, [
                 'required' => false,
             ])
-            ->add('oeuvresExt', TextType::class, [
+            ->add('oeuvresExt', CKEditorType::class, [
                 'required' => false,
             ])
-            ->add('liensWeb', TextType::class, [
+            ->add('liensWeb', CKEditorType::class, [
                 'required' => false,
             ])
             ->add('image', FileType::class, array('label' => 'Fichier à télécharger'), [
