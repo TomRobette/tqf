@@ -2,6 +2,20 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions. composer require friendsofsymfony/ckeditor-bundle
 
+## [v0.2.2] - (21-01-2021)
+
+### Ajouté
+- Ajout du formulaire modifOeuvreType
+- Ajout de modifOeuvre dans le OeuvreController
+- Ajout de la vue modifOeuvre
+- Ajout d'un README.md
+
+### Modifié
+
+### Réglé
+- Ajout du use ModifOeuvreType dans OeuvreController
+- Modification des getImage() et setImage() de modifOeuvre
+
 ## [v0.2.1] - (21-01-2021)
 
 ### Ajouté

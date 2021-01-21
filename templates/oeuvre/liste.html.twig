@@ -40,6 +40,12 @@
 								<p class="card-text">
 									<small class="text-muted">{{oeuvre.noteStatut|capitalize}}</small>
 								</p>
+								<a href="{{path('listeOeuvres',{'supp':oeuvre.id})}}">
+									<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
+								</a>
+								<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
+									<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
+								</a>
 							</div>
 						</div>
 					</a>
