@@ -20,6 +20,7 @@ class AuteurController extends AbstractController
      */
     public function ajoutAuteur(Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $auteur = new Auteur();
         $form = $this->createForm(ajoutAuteurType::class,$auteur);
         if ($request->isMethod('POST')){           
@@ -133,6 +134,7 @@ class AuteurController extends AbstractController
      */
     public function modifAuteur(int $id, Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $em = $this->getDoctrine();
         $repoAuteur = $em->getRepository(Auteur::class);
         $auteur = $repoAuteur->find($id);

@@ -16,6 +16,7 @@ class GenreController extends AbstractController
      */
     public function ajoutGenre(Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $genre = new Genre();
         $form = $this->createForm(ajoutGenreType::class,$genre);
         
@@ -41,6 +42,7 @@ class GenreController extends AbstractController
     */
     public function listeGenres(Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $em = $this->getDoctrine();
         $repoGenre = $em->getRepository(Genre::class);
 

@@ -2,6 +2,15 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.2.4] - (21-01-2021)
+
+### Ajouté
+- Mise en place de condition de connexion pour ajoutAuteur, modifAuteur, ajoutOeuvre, modifOeuvre, ajoutGenre, listeGenres
+
+### Modifié
+
+### Réglé
+
 ## [v0.2.3] - (21-01-2021)
 
 ### Ajouté

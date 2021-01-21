@@ -20,6 +20,7 @@ class OeuvreController extends AbstractController
      */
     public function ajoutOeuvre(Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $oeuvre = new Oeuvre();
         $form = $this->createForm(AjoutOeuvreType::class,$oeuvre);
         if ($request->isMethod('POST')){           
@@ -132,6 +133,7 @@ class OeuvreController extends AbstractController
      */
     public function modifOeuvre(int $id, Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $em = $this->getDoctrine();
         $repoOeuvre = $em->getRepository(Oeuvre::class);
         $oeuvre = $repoOeuvre->find($id);
