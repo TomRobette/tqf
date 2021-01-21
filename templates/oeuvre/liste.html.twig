@@ -12,7 +12,7 @@
 		<div class="row row-cols-1 row-cols-md-6 g-4">
 			{% set i = 0 %}
 			{% for oeuvre in oeuvre %}
-				<div class="col">
+				<div class="col mt-3">
 					<a class="card-linker" href="{{path('oeuvre',{'id':oeuvre.id})}}">
 						<div class="card">
 							<img src="{{images[i]}}" class="card-img-top" alt="..."/>
@@ -40,12 +40,14 @@
 								<p class="card-text">
 									<small class="text-muted">{{oeuvre.noteStatut|capitalize}}</small>
 								</p>
-								<a href="{{path('listeOeuvres',{'supp':oeuvre.id})}}">
-									<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
-								</a>
-								<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
-									<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
-								</a>
+								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+									<a href="{{path('listeOeuvres',{'supp':oeuvre.id})}}">
+										<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
+									</a>
+									<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
+										<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
+									</a>
+								{% endif %}	
 							</div>
 						</div>
 					</a>

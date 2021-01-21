@@ -1,6 +1,40 @@
 CHANGELOG
 =========
-Ici sont notés les ajouts, modifications et réglages de bugs selon les versions. composer require friendsofsymfony/ckeditor-bundle
+Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
+
+## [v0.2.3] - (21-01-2021)
+
+### Ajouté
+- Création d'un Authentificateur ConnectFrom
+- Création de SecurityController
+- Création de la vue login.html.twig
+- Ajout de inscrire dans AccueilController
+- Création de la vue inscription
+- Ajout du formulaire InscriptionType
+- Ajout du formulaire LoginType
+- Ajout d'un rappel visuel dans le footer pour savoir qui est connecté
+
+### Modifié
+- Ajout des bioCourte des auteurs dans les pageOeuvre
+- Changement de coleur des liens des pages dans le <style> de base.html.twig
+- Modification de l'encodeur dans security.yaml
+- Ajout du lien connexion dans le footer
+- Modification de login() dans SecurityController
+- Refonte des vues inscription et login
+- Ajout du RedirectResponse vers accueil dans ConnectFromAuthenticator.php
+- Conditionnement des boutons suppression et modification de listeAuteurs et listeOeuvres
+- Mise en commentaire de l'inscription lorsque l'administrateur n'est pas connecté
+- Suppression du symbole de maison pour l'accueil dans la barre de navigation au profit du titre du site
+- Refonte des liens admin et user dans le footer
+- Déplacement du lien "les amis du temps qu'il fait" dans la navbar
+- Ajout des liens de modification et de suppression (Conditionnés) dans pageOeuvre
+- Ajout des liens de modification et de suppression (Conditionnés) dans pageAuteur
+- Ajout d'un mt-3 (margin-top-3) dans les composants de listeOeuvres, listeAuteurs et accueil
+
+### Réglé
+- Correction d'un texte en trop au début du CHANGELOG
+- Ajout des use nécessaires dans SecurityController et AccueilController
+- Suppression des security.authorization_utils dans SecurityController
 
 ## [v0.2.2] - (21-01-2021)
 
@@ -37,7 +71,7 @@ Ici sont notés les ajouts, modifications et réglages de bugs selon les version
 
 ### Ajouté
 - Installation de php7.3-zip
-- Installation du bundle ckeditor
+- Installation du bundle ckeditor (composer require friendsofsymfony/ckeditor-bundle)
 - Installation de ckeditor
 - Installation des assets de ckeditor
 - Ajout d'un répertoire ckeditor dans uploads afin d'y diriger les fichiers des composants textes (images, vidéos, etc)

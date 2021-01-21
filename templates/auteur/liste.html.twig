@@ -12,19 +12,21 @@
 		<div class="row row-cols-1 row-cols-md-6 g-4">
 			{% set i = 0 %}
 			{% for auteur in auteur %}
-			<div class="col">
+			<div class="col  mt-3">
 			<a class="card-linker" href="{{path('auteur',{'id':auteur.id})}}">
 				<div class="card">
 					<img src="{{images[i]}}" class="card-img-top" alt="..."/>
 					<div class="card-body">
 						<h5 class="card-title">{{auteur.prenom|capitalize}}
 							{{auteur.nom|upper}}</h5>
-							<a href="{{path('listeAuteurs',{'supp':auteur.id})}}">
-								<span class="material-icons text-dark" title="Supprimer l'auteur de la base de données">delete</span>
-							</a>
-							<a href="{{path('modifAuteur',{'id':auteur.id})}}">
-								<span class="material-icons text-dark" title="Modifier l'auteur dans la base de données">create</span>
-							</a>
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<a href="{{path('listeAuteurs',{'supp':auteur.id})}}">
+									<span class="material-icons text-dark" title="Supprimer l'auteur de la base de données">delete</span>
+								</a>
+								<a href="{{path('modifAuteur',{'id':auteur.id})}}">
+									<span class="material-icons text-dark" title="Modifier l'auteur dans la base de données">create</span>
+								</a>
+							{% endif %}
 					</div>
 				</div>
 			</a>

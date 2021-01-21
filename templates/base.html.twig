@@ -167,25 +167,21 @@
 					color: #007bb6;
 				}
 				.lien:hover {
-					color: blue;
+					color: grey;
+					text-decoration: none;
 				}
 			</style>
 		{% endblock %}
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark cc_cursor">
-			<a class="navbar-brand" href="#">Le temps qu'il fait</a>
+			<a class="navbar-brand" href="{{ path('accueil')}}">Le temps qu'il fait</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link text-light" href="{{ path('accueil')}}">
-							<span class="material-icons md-48">home</span>
-						</a>
-					</li>
 					<li class="nav-item active">
 						<a class="nav-link text-light" href="#">
 							Parutions
@@ -213,6 +209,11 @@
 					</li>
 					<li class="nav-item active">
 						<a class="nav-link text-light" href="#">
+							Les amis du temps qu'il fait
+						</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link text-light" href="#">
 							Commande
 						</a>
 					</li>
@@ -235,16 +236,29 @@
 					<div class="col-sm-12 col-md-6">
 						<h6>À propos</h6>
 						<p class="text-justify">
-							<i>Lorem ipsum
-							</i>
-							dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<i>Lorem ipsum</i>
+							dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+							Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</p>
+						{% if is_granted('ROLE_ADMIN') %}
+							<h6>Vous êtes connecté en tant que
+								{{ app.user.email }}
+								<small>
+									<span class="badge badge-info">(Admin)</span>
+								</small>
+							</h6>
+						{% elseif is_granted('ROLE_USER') %}
+							<h6>Vous êtes connecté en tant que
+								{{ app.user.email }}
+								<small>
+									<span class="badge badge-info">(Utilisateur)</span>
+								</small>
+							</h6>
+						{% endif %}
 					</div>
 					<div class="col-xs-6 col-md-3">
 						<h6>Liens rapides</h6>
 						<ul class="footer-links">
-							<li>
-								<a class="text-info" href="#">Les amis du temps qu'il fait</a>
-							</li>
 							<li>
 								<a href="#">À propos</a>
 							</li>
@@ -267,42 +281,45 @@
 						<ul class="footer-links">
 							{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
 								<li>
-									<a href="#">
+									<a href="{{ path('app_login')}}">
 										Se connecter
 									</a>
 								</li>
+								{# <li>
+									<a href="{{ path('inscrire')}}">Inscrire un utilisateur</a>
+								</li> #}
 							{% else %}
 
 								{% if is_granted('ROLE_ADMIN') %}
 									<li>
-										<a href="#">
+										<a class="text-info" href="#">
 											Page administrateur
+										</a>
+									</li>
+									<li>
+										<a href="{{ path('inscrire')}}">
+											Inscrire un nouvel utilisateur
 										</a>
 									</li>
 								{% endif %}
 								<li>
-									<a href="{{ path('app_logout')}}">
+									<a class="text-info" href="{{ path('app_logout')}}">
 										Se déconnecter
 									</a>
 								</li>
 								<li>
-									<a href="#">
-										Inscrire un nouvel utilisateur
-									</a>
+									<a href="{{ path('listeGenres')}}">Liste des Genres</a>
+								</li>
+								<li>
+									<a href="{{ path('ajoutGenre')}}">Ajouter un Genre</a>
+								</li>
+								<li>
+									<a href="{{ path('ajoutAuteur')}}">Ajouter un Auteur</a>
+								</li>
+								<li>
+									<a href="{{ path('ajoutOeuvre')}}">Ajouter une Oeuvre</a>
 								</li>
 							{% endif %}
-							<li>
-								<a href="{{ path('ajoutGenre')}}">Ajout Genre</a>
-							</li>
-							<li>
-								<a href="{{ path('listeGenres')}}">Liste Genres</a>
-							</li>
-							<li>
-								<a href="{{ path('ajoutAuteur')}}">Ajout Auteur</a>
-							</li>
-							<li>
-								<a href="{{ path('ajoutOeuvre')}}">Ajout Oeuvre</a>
-							</li>
 						</ul>
 					</div>
 				</div>
@@ -317,21 +334,21 @@
 									<i class="fa fa-facebook"></i>
 								</a>
 							</li>
-							{# <li>
-																																				<a class="twitter" href="#">
-																																					<i class="fa fa-twitter"></i>
-																																				</a>
-																																			</li>
-																																			<li>
-																																				<a class="dribbble" href="#">
-																																					<i class="fa fa-dribbble"></i>
-																																				</a>
-																																			</li>
-																																			<li>
-																																				<a class="linkedin" href="#">
-																																					<i class="fa fa-linkedin"></i>
-																																				</a>
-																																			</li> #}
+							{#<li>
+								<a class="twitter" href="#">
+									<i class="fa fa-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a class="dribbble" href="#">
+									<i class="fa fa-dribbble"></i>
+								</a>
+							</li>
+							<li>
+								<a class="linkedin" href="#">
+									<i class="fa fa-linkedin"></i>
+								</a>
+							</li>#}
 						</ul>
 
 						<form class="form-inline my-2 my-lg-0">

@@ -34,6 +34,11 @@
 										{% set cpt = cpt + 1 %}
 									{% endfor %}
 								</p>
+								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+									<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
+										<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
+									</a>
+								{% endif %}	
 						<p class="card-text">{{oeuvre.genre.libelle}}</p>
 						<p class="card-text">{{oeuvre.noteStatut}}</p>
 						<p class="card-text">Dimensions : {{oeuvre.dimensions}}</p>
@@ -51,6 +56,19 @@
 							<p class="card-subtitle text-center">Extrait<p>
 							<p class="card-text">{{oeuvre.extrait|raw}}</p>
 						{% endif %}
+
+						{% for aut in oeuvre.auteurs %}
+							<p class="card-subtitle text-center"><a class="lien" href="{{path('auteur',{'id':aut.id})}}">{{aut.prenom|capitalize}} {{aut.nom|upper}}</a></p>
+							<p class="card-text">{{aut.bioCourte|raw}}</p>	
+							<br>
+						{% endfor %}
+							<br>
+							<br>	
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<a href="{{path('listeAuteurs',{'supp':auteur.id})}}">
+									<span class="material-icons text-dark" title="Supprimer l'auteur de la base de données">delete</span>
+								</a>
+							{% endif %}
 					</div>
 				</div>
 			</div>
