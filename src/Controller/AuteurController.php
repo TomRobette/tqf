@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use App\Entity\Fichier;
 use App\Entity\Auteur;
 use App\Form\AjoutAuteurType;
+use App\Form\ModifAuteurType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class AuteurController extends AbstractController
@@ -123,6 +124,55 @@ class AuteurController extends AbstractController
         return $this->render('auteur/page.html.twig', [               
             'auteur'=>$auteur,
             'base64'=>$base64
+        ]);
+    }
+
+    
+     /**
+     * @Route("/modifAuteur/{id}", name="modifAuteur", requirements={"id"="\d+"})
+     */
+    public function modifAuteur(int $id, Request $request)
+    {
+        $em = $this->getDoctrine();
+        $repoAuteur = $em->getRepository(Auteur::class);
+        $auteur = $repoAuteur->find($id);
+
+        if($auteur==null){
+            $this->addFlash('notice','Cette page n\'existe pas');
+            return $this->redirectToRoute('listeAuteurs');   
+        }
+
+        $form = $this->createForm(ModifAuteurType::class,$auteur);
+
+        if ($request->isMethod('POST')) {            
+            $form->handleRequest($request);            
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $fichier = new Fichier();
+                $fichier->setNom($auteur->getImage());
+                $file = $fichier->getNom();
+                $fichier->setExtension($file->guessExtension()); //On récupère l'extension
+                $fichier->setTaille($file->getSize());
+                $fichier->setVraiNom($file->getClientOriginalName());
+                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+                $fichier->setNom($fileName);
+                $em->persist($fichier);
+                $auteur->setImage($fichier);
+                $em->persist($auteur);
+                $em->flush();
+                try{
+                    $file->move($this->getParameter('auteur_directory'),$fileName);
+
+                }catch(FileException $e){
+                    $this->addFlash('notice','Erreur lors de l\'insertion de l\'image');
+                }
+                $this->addFlash('notice','Auteur modifié');
+                return $this->redirectToRoute('listeAuteurs');        
+            }          
+        } 
+
+        return $this->render('auteur/modif.html.twig', [            
+            'form'=>$form->createView()        
         ]);
     }
 }

@@ -2,6 +2,23 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions. composer require friendsofsymfony/ckeditor-bundle
 
+## [v0.2.1] - (21-01-2021)
+
+### Ajouté
+- Ajout du formulaire modifAuteurType
+- Ajout de modifAuteur dans AuteurController
+- Ajout de la vue modifAuteur
+
+### Modifié
+- Modification de la vue listeAuteur pour le lien vers modifAuteur
+
+### Réglé
+- Ajout du use ModifAuteurType dans AuteurController
+- Remplacement des "place_holders" par "data" dans ModifAuteurType
+- Suppression des "data" dans ModifAuteurType car ils sont inutiles
+- Il n'y avait pas de FichierRepository
+- Arrêt du transfert de données entre l'image d'un auteur et la modification
+
 ## [v0.2.0] - (20-01-2021)
 
 ### Ajouté
