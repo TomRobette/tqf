@@ -12,6 +12,11 @@ use App\Entity\Oeuvre;
 use App\Form\AjoutOeuvreType;
 use App\Form\ModifOeuvreType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Transaction;
+use Beelab\PaypalBundle\Paypal\Exception;
+use Beelab\PaypalBundle\Paypal\Service;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+
 
 class OeuvreController extends AbstractController
 {
@@ -103,10 +108,30 @@ class OeuvreController extends AbstractController
     /**
      * @Route("/oeuvre/{id}", name="oeuvre", requirements={"id"="\d+"})
      */
-    public function oeuvre(int $id, Request $request)
+    public function oeuvre(int $id, Request $request, Service $service)
     {
         $em = $this->getDoctrine();
         $repoOeuvre = $em->getRepository(Oeuvre::class);
+
+        if($request->get('buy')!=null){
+            $oeuvre = $repoOeuvre->find($request->get('buy'));
+            if($oeuvre!=null){
+                $amount = 2;  // get an amount, e.g. from your cart
+                $transaction = new Transaction($amount);
+                try {
+                    $response = $service->setTransaction($transaction)->start();
+                    $em->getManager()->persist($transaction);
+                    $em->getManager()->flush();
+
+                    $this->addFlash('notice','Oeuvre ajoutée au panier');
+                    return $this->redirectToRoute('accueil');   
+                } catch (Exception $e) {
+                    throw new HttpException(503, 'Payment error', $e);
+                }
+            }
+            $this->redirectToRoute('listeOeuvres');
+        }
+
         $oeuvre = $repoOeuvre->find($id);
 
         if($oeuvre==null){
