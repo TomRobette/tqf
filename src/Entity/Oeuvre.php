@@ -85,9 +85,20 @@ class Oeuvre
      */
     private $couverture;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $statut;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $codePP;
+
     public function __construct()
     {
         $this->auteurs = new ArrayCollection();
+        $this->produits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -259,6 +270,30 @@ class Oeuvre
     public function setCouverture($couverture)
     {
         $this->couverture = $couverture;
+
+        return $this;
+    }
+
+    public function getStatut(): ?bool
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(bool $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getCodePP(): ?string
+    {
+        return $this->codePP;
+    }
+
+    public function setCodePP(?string $codePP): self
+    {
+        $this->codePP = $codePP;
 
         return $this;
     }

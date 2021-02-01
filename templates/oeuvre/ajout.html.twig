@@ -73,6 +73,15 @@
 				{{ form_widget(form.auteurs, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
+				{{ form_label(form.statut, 'L\'oeuvre est-elle disponible à l\'achat en ligne sur ce site ?', {'label_attr': {'class': 'font-weight-bold'}}) }}  
+				<small><span class="badge badge-info">{{ form_help(form.statut) }}</span></small>                  
+                {{ form_widget(form.statut, {'attr': {'class': 'form-control'}}) }}       
+            </div>
+			<div class="form-group">
+				{{ form_label(form.codePP, 'Le code du bouton paypal pour acheter l\'oeuvre (laisser vide si l\'oeuvre n\'est pas disponible)', {'label_attr': {'class': 'font-weight-bold'}}) }}    
+                {{ form_widget(form.codePP, {'attr': {'class': 'form-control'}}) }}       
+            </div>
+			<div class="form-group">
 				{{ form_label(form.couverture, 'La première de couverture de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}  
 				<small><span class="badge badge-info">{{ form_help(form.couverture) }}</span></small>                  
                 {{ form_widget(form.couverture, {'attr': {'class': 'form-control'}}) }}       

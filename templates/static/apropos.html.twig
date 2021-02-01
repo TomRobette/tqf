@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent()}}| À propos
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<h1 class="text-center text-primary p-4">La maison</h1>
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				{% if apropos|length > 0 %}
+					<a href="{{path('modifApropos')}}">
+						<span class="material-icons text-dark" title="Modifier la page">create</span>
+					</a>
+				{% else %}
+					<a href="{{path('ajoutApropos')}}">
+						<span class="material-icons text-dark" title="Créer la page">create</span>
+					</a>
+				{% endif %}
+			{% endif %}
+		</div>
+		
+		{% if apropos|length > 0 %}
+			<p>{{apropos[0].texte|raw}}</p>
+		{% else %}
+			<p>Veuillez nous excuser, cette page est vide pour l'instant</p>
+		{% endif %}
+	</div>
+{% endblock %}

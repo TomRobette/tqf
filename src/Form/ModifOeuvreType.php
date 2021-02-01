@@ -79,6 +79,13 @@ class ModifOeuvreType extends AbstractType
             'required' => true,
             'help' => 'Obligatoire',
         ])
+        ->add('statut', CheckboxType::class, [
+            'required' => true,
+            'help' => 'Obligatoire',
+        ])
+        ->add('codePP', TextType::class, [
+            'required' => false,
+        ])
         ->add('couverture', FileType::class, [
             'label' => 'Fichier à télécharger',
             'data_class' => null,

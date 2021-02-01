@@ -2,6 +2,27 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.2.6] - (01-02-2021)
+
+### Ajouté
+- Ajout de l'entité Apropos qui contiendra une page modifiable d'à propos
+- Ajout d'un contrôleur Static
+- Ajout de la vue apropos.html.twig
+- Ajout des contrôleurs ajoutApropos et modifApropos
+- Ajout des formulaires AjoutAproposType et ModifAproposType
+- Ajout des vues ajoutApropos et modifApropos
+
+### Modifié
+- Ajout de statut et codePP (Paypal) dans l'entité oeuvre
+- Ajout de statut et code PP dans ajoutOeuvre et modifOeuvre
+- Ajout de statut et code PP dans les vues ajout et modif Oeuvre
+- Suppression du lien "autre fonds" dans le footer
+- Migration des modifications
+
+### Réglé
+- Modification de la condition TWIG dans apropos en |length
+- Correction du $id du find() de modifApropos en 1
+
 ## [v0.2.5] - (01-02-2021)
 
 ### Ajouté

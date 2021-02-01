@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Genre;
 use App\Entity\Auteur;
@@ -78,6 +79,13 @@ class AjoutOeuvreType extends AbstractType
                 'multiple'  => true,
                 'required' => true,
                 'help' => 'Obligatoire',
+            ])
+            ->add('statut', CheckboxType::class, [
+                'required' => true,
+                'help' => 'Obligatoire',
+            ])
+            ->add('codePP', TextType::class, [
+                'required' => false,
             ])
             ->add('couverture', FileType::class, array('label' => 'Fichier à télécharger'), [
                 'required' => true,
