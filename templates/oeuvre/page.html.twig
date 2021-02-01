@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{parent()}}|
-	{{oeuvre.titre|capitalize}}
+	{{parent()}}| {{oeuvre.titre|capitalize}}
 {% endblock %}
 
 {% block body %}
@@ -13,75 +12,63 @@
 				<div class="col-md-4">
 					<br>
 					<img src="{{base64}}" class="card-img" alt="...">
-					<a href="{{path('oeuvre',{'id':oeuvre.id, 'buy':oeuvre.id})}}">
-						<span class="material-icons text-dark" title="Acheter">add_shopping_cart</span>
-					</a>
 				</div>
 				<div class="col-md-8">
 					<div class="card-body">
 						<h3 class="card-title text-center">{{oeuvre.titre|capitalize}}</h3>
-						<p class="card-text">
-							{% set adder = "" %}
-							{% set cpt = 0 %}
-							{% for aut in oeuvre.auteurs %}
-								<a class="lien" href="{{path('auteur',{'id':aut.id})}}">{{aut.prenom|capitalize}}
-									{{aut.nom|upper}}</a>
-
-								{% if oeuvre.auteurs|length == 1 %}
-									{% elseif oeuvre.auteurs|length == 2 %}
-										{% set adder = " & " %}
-									{% else %}
-										{% set adder = ", " %}
-								{% endif %}
-								{% if cpt < oeuvre.auteurs|length - 1 %}
-									{{adder}}
-								{% endif %}
-								{% set cpt = cpt + 1 %}
-							{% endfor %}
-						</p>
-						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-							<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
-								<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
-							</a>
-						{% endif %}
+								<p class="card-text">
+									{% set adder = "" %}
+									{% set cpt = 0 %}
+									{% for aut in oeuvre.auteurs %}
+										<a class="lien" href="{{path('auteur',{'id':aut.id})}}">{{aut.prenom|capitalize}} {{aut.nom|upper}}</a>
+									
+										{% if oeuvre.auteurs|length == 1 %}
+										{% elseif oeuvre.auteurs|length == 2 %}
+											{% set adder = " & " %}
+										{% else %}
+											{% set adder = ", " %}
+										{% endif %}
+										{% if cpt < oeuvre.auteurs|length - 1 %}
+											{{adder}}
+										{% endif %}
+										{% set cpt = cpt + 1 %}
+									{% endfor %}
+								</p>
+								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+									<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
+										<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
+									</a>
+								{% endif %}	
 						<p class="card-text">{{oeuvre.genre.libelle}}</p>
 						<p class="card-text">{{oeuvre.noteStatut}}</p>
-						<p class="card-text">Dimensions :
-							{{oeuvre.dimensions}}</p>
-						<p class="card-text">ISBN :
-							{{oeuvre.isbn}}</p>
-						<p class="card-text">{{oeuvre.nbPages}}
-							pages</p>
+						<p class="card-text">Dimensions : {{oeuvre.dimensions}}</p>
+						<p class="card-text">ISBN : {{oeuvre.isbn}}</p>
+						<p class="card-text">{{oeuvre.nbPages}} pages</p>
 						<p class="card-text">Publié le
 							{{oeuvre.datePublication|date('d-m-Y')}}</p>
 						<p class="card-text">{{oeuvre.note}}</p>
 						<p class="card-text">{{oeuvre.prix|format_currency('EUR',{rounding_mode: 'floor'})}}</p>
-						<p class="card-subtitle text-center">Description</p>
-						<p></p>
+						<p class="card-subtitle text-center">Description<p>
 						<p class="card-text">{{oeuvre.description|raw}}</p>
 
 						{% if oeuvre.extrait is not null %}
 							<br>
-							<p class="card-subtitle text-center">Extrait</p>
-							<p></p>
+							<p class="card-subtitle text-center">Extrait<p>
 							<p class="card-text">{{oeuvre.extrait|raw}}</p>
 						{% endif %}
 
 						{% for aut in oeuvre.auteurs %}
-							<p class="card-subtitle text-center">
-								<a class="lien" href="{{path('auteur',{'id':aut.id})}}">{{aut.prenom|capitalize}}
-									{{aut.nom|upper}}</a>
-							</p>
-							<p class="card-text">{{aut.bioCourte|raw}}</p>
+							<p class="card-subtitle text-center"><a class="lien" href="{{path('auteur',{'id':aut.id})}}">{{aut.prenom|capitalize}} {{aut.nom|upper}}</a></p>
+							<p class="card-text">{{aut.bioCourte|raw}}</p>	
 							<br>
 						{% endfor %}
-						<br>
-						<br>
-						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-							<a href="{{path('listeAuteurs',{'supp':auteur.id})}}">
-								<span class="material-icons text-dark" title="Supprimer l'auteur de la base de données">delete</span>
-							</a>
-						{% endif %}
+							<br>
+							<br>	
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<a href="{{path('listeAuteurs',{'supp':auteur.id})}}">
+									<span class="material-icons text-dark" title="Supprimer l'auteur de la base de données">delete</span>
+								</a>
+							{% endif %}
 					</div>
 				</div>
 			</div>

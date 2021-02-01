@@ -1,22 +1,4 @@
 {
-    "andchir/omnipay-bundle": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.0",
-            "ref": "b70bdce6cb4c9a3933dcc082c270042e630b5507"
-        }
-    },
-    "andchir/omnipay3-yandexkassa": {
-        "version": "v1.0.5"
-    },
-    "andrewnovikof/omnipay-sberbank": {
-        "version": "3.2.2"
-    },
-    "beelab/paypal-bundle": {
-        "version": "1.5.x-dev"
-    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.1"
     },
@@ -111,8 +93,14 @@
             "ref": "8eb1cd0962ded6a6d6e1e5a9b6d3e888f9f94ff6"
         }
     },
-    "hiqdev/omnipay-robokassa": {
-        "version": "3.2.0"
+    "guzzlehttp/guzzle": {
+        "version": "7.2.0"
+    },
+    "guzzlehttp/promises": {
+        "version": "1.4.0"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.7.0"
     },
     "laminas/laminas-code": {
         "version": "3.5.1"
@@ -123,32 +111,14 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.1.1"
     },
-    "league/omnipay": {
-        "version": "v3.1.0"
-    },
-    "moneyphp/money": {
-        "version": "v3.3.1"
-    },
     "monolog/monolog": {
         "version": "2.2.0"
     },
     "nikic/php-parser": {
         "version": "v4.10.4"
     },
-    "omnipay/common": {
-        "version": "v3.0.3"
-    },
-    "omnipay/paypal": {
-        "version": "v3.0.2"
-    },
     "php": {
         "version": "7.3"
-    },
-    "php-http/discovery": {
-        "version": "1.13.0"
-    },
-    "php-http/guzzle7-adapter": {
-        "version": "0.1.1"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -312,7 +282,7 @@
         ]
     },
     "symfony/http-client": {
-        "version": "v5.2.1"
+        "version": "v5.2.2"
     },
     "symfony/http-client-contracts": {
         "version": "v2.3.1"
@@ -563,28 +533,6 @@
             "config/packages/dev/web_profiler.yaml",
             "config/packages/test/web_profiler.yaml",
             "config/routes/dev/web_profiler.yaml"
-        ]
-    },
-    "symfony/webpack-encore-bundle": {
-        "version": "1.9",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.9",
-            "ref": "579d8de06df2ceb34d39e84e84c0c051b9b5ac68"
-        },
-        "files": [
-            "assets/app.js",
-            "assets/bootstrap.js",
-            "assets/controllers.json",
-            "assets/controllers/hello_controller.js",
-            "assets/styles/app.css",
-            "config/packages/assets.yaml",
-            "config/packages/prod/webpack_encore.yaml",
-            "config/packages/test/webpack_encore.yaml",
-            "config/packages/webpack_encore.yaml",
-            "package.json",
-            "webpack.config.js"
         ]
     },
     "symfony/yaml": {

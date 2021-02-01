@@ -2,23 +2,15 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
-## [v0.2.5] - (25-01-2021)->(28-01-2021)
+## [v0.2.5] - (01-02-2021)
 
 ### Ajouté
-- Ajout d'un lien/icône d'achat pour paypal dans pageOeuvre
-- Installation de andchir/omnipay-bundle
-- Installation de beelab/paypal-bundle
-- Installation de symfony/http-client
-- Création de paypal_paypal.yaml
-- Création de l'entité Transaction
-- Création d'une migration
-- Ajout d'une bannière alert dans base.html.twig
-- Installation de NodeJs
-- Installation de symfony/webpack-encore-bundle
 
 ### Modifié
 
 ### Réglé
+- Supression de webpack-encore
+- Réglage du bug de manifest.json avec le widget ckeditor
 
 ## [v0.2.4] - (21-01-2021)
 

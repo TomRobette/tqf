@@ -2,3 +2,6 @@ fos_ck_editor:
     filebrowsers:
         - VideoBrowse
         - VideoUpload
+
+    base_path: "build/ckeditor"
+    js_path:   "build/ckeditor/ckeditor.js"    

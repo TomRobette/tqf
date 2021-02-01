@@ -2,6 +2,6 @@ beelab_paypal:
     username: "sb-7im8n4916960_api1.business.example.com"
     password: "M8Q59QKEWAJKL97F"
     signature: "AfBL1sC11JGbyJqZi0KShe4BJYn0ASa9URwV12j505A8i2FGJXwlSFQ."
-    return_route: accueil
-    cancel_route: listeOeuvres
+    return_route: completePayment
+    cancel_route: cancelPayment
     test_mode: "%kernel.debug%"
