@@ -9,18 +9,13 @@
 {{parent()}}
 <div class="container-fluid">
 	<div class="row justify-content-center">
-		<h1 class="text-center text-primary p-4">Modification de la chronique</h1>
+		<h1 class="text-center text-primary p-4">Modification de la page Apropos</h1>
 	</div>
 	<div class="row justify-content-center">
 		<div class="col-8 bg-white p-4 m-0 text-dark">
 			{{ form_start(form) }}
 			<div class="form-group">
-				{{ form_label(form.date, 'La date de la chronique', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.date) }}</span></small>
-				{{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
-			</div>
-			<div class="form-group">
-				{{ form_label(form.texte, 'Le texte de la chronique', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				{{ form_label(form.texte, 'Le texte de la page', {'label_attr': {'class': 'font-weight-bold'}}) }}
 				<small><span class="badge badge-info">{{ form_help(form.texte) }}</span></small>
 				{{ form_widget(form.texte, {'attr': {'class': 'form-control'}}) }}
 			</div>

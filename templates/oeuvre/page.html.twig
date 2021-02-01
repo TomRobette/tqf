@@ -65,8 +65,8 @@
 							<br>
 							<br>	
 							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-								<a href="{{path('listeAuteurs',{'supp':auteur.id})}}">
-									<span class="material-icons text-dark" title="Supprimer l'auteur de la base de données">delete</span>
+								<a href="{{path('listeOeuvres',{'supp':oeuvre.id})}}">
+									<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
 								</a>
 							{% endif %}
 					</div>

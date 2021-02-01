@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent()}}| À propos
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+		<div class="card mb-3">
+			<div class="row no-gutters">
+				<div class="col-md-8">
+					<div class="card-body" id="chronique">
+						<h3 class="card-title text-center">Chronique</h3>
+								{# {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+									<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
+										<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
+									</a>
+								{% endif %}	 #}
+{# 
+							<br>
+							<br>	
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<a href="{{path('listeOeuvres',{'supp':oeuvre.id})}}">
+									<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
+								</a>
+							{% endif %} #}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{# <div class="container-fluid"> #}
+		{# <div class="row justify-content-center">
+			<h1 class="text-center text-primary p-4">Chronique</h1>
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				{% if chroniques|length > 0 %}
+					<a href="{{path('modifApropos')}}">
+						<span class="material-icons text-dark" title="Modifier la page">create</span>
+					</a>
+				{% else %}
+					<a href="{{path('ajoutApropos')}}">
+						<span class="material-icons text-dark" title="Créer la page">create</span>
+					</a>
+				{% endif %}
+			{% endif %}
+		</div>
+		{% set i = chroniques|length %}
+		{% set pointer = i %} #}
+
+		{# {% if chroniques|length > 0 %}
+			<h3>
+  				<small class="text-muted">{{chroniques[pointer].date|date('d-m-Y')}}</small>
+			</h3>
+			<p>{{chroniques[pointer].texte|raw}}</p>
+		{% else %}
+			<p>Veuillez nous excuser, cette page est vide pour l'instant</p>
+		{% endif %} #}
+ 
+   		{# </br> 
+   		</br>  
+   
+   		<table>  
+      		<tbody id = "chronique"></tbody>  
+   		</table>  
+	</div> #}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent()}}
+<script language = "javascript">
+$(document).ready(function(){   
+    $.ajax({  
+        type:       "POST",   
+        url:       	"{{ path('chronique')}}",  
+        dataType:   "json",  
+        async:      true,  
+               
+        success: function(data, status) {  
+            for(i = 0; i < data.length; i++) {  
+                chronique = data[i];  
+                var e = $('<p class="card-text" id="texte"></p>'); 
+                      
+                $('#texte', e).html(chronique['texte']);  
+                $('#chronique').append(e);  
+            }  
+        },  
+        error : function(xhr, textStatus, errorThrown) {  
+            alert('Ajax request failed.'+errorThrown);  
+        }  
+    });  
+});  
+</script>
+{% endblock %}
+

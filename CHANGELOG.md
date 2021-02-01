@@ -2,6 +2,22 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.2.7] - (01-02-2021)
+
+### Ajouté
+- Mise en place du chemin vers apropos
+- Ajout de l'entité Chronique
+- Ajout des contrôleurs chronique, ajoutChornique et modifChronique
+- Ajout des formulaires AjoutChroniqueType et ModifChroniqueType
+- Ajout des vues chronique, ajoutChornique et modifChronique
+
+### Modifié
+- "Commentage" de la partie À propos du footer
+- Déplacement de la barre de recherche à la place du "à propos"
+
+### Réglé
+- Correction du bug de la suppression d'auteur plutôt que l'oeuvre dans pageOeuvre
+
 ## [v0.2.6] - (01-02-2021)
 
 ### Ajouté
