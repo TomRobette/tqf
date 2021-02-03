@@ -2,6 +2,28 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.2.8] - (03-02-2021)
+
+### Ajouté
+- Mise en place du lien vers chronique
+- Ajout de la vue listeChroniques
+- Ajout du contrôleur listeChroniques
+- Ajout du contrôleur pageAdmin
+- Ajout de la vue pageAdmin
+- Mise en place du lien vers pageAdmin
+- Ajout de la vue modifGenre
+- Ajout du formulaire ModifGenreType
+- Ajout du contrôleur modifGenre
+
+### Modifié
+- Modification de la vue modifChronique, ajoutChronique, modifApropos et ajoutApropos pour que le titre de page soit correct
+- Liens admins du footer déplacés dans pageAdmin
+- Ajout du lien vers modifGenre dans la vue listeGenre
+
+### Réglé
+- Changement de "return new JsonResponse($data);" en "return $this->json($data);" dans le contrôleur chronique
+- Réglage du problème de carousel qui se chevauche
+
 ## [v0.2.7] - (01-02-2021)
 
 ### Ajouté

@@ -1,36 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{ parent()}}| Liste Genres
+	{{ parent()}}| Liste Chroniques
 {% endblock %}
 
 {% block body %}
 	<div class="container-fluid">
 		<div class="row justify-content-center">
-			<h1 class="text-center text-primary p-4">Liste des Genres littéraires et artistiques</h1>
+			<h1 class="text-center text-primary p-4">Liste chroniques</h1>
 		</div>
 		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th scope="col">N°</th>
-					<th scope="col">Libelle</th>
+					<th scope="col">Date</th>
 					<th scope="col"></th>
 					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
-				{% for genre in genre %}
+				{% for chronique in chroniques %}
 					<tr class="{{ cycle(['table-info', 'table-light'], loop.index0)}}">
-						<td>{{genre.id}}</td>
-						<td>{{genre.libelle}}</td>
+						<td>{{chronique.id}}</td>
+						<td>{{chronique.date|date("d/m/Y")}}</td>
 						<td>
-							<a href="{{path('modifGenre',{'id':genre.id})}}">
-								<span class="material-icons text-dark" title="Modifier le genre">create</span>
+							<a href="{{path('modifChronique',{'id':chronique.id})}}">
+								<span class="material-icons text-dark" title="Modifier la chronique">create</span>
 							</a>
 						</td>
 						<td>
-							<a href="{{path('listeGenres',{'supp':genre.id})}}">
-								<span class="material-icons text-dark" title="Supprimer le genre">delete</span>
+							<a href="{{path('listeChroniques',{'supp':chronique.id})}}">
+								<span class="material-icons text-dark" title="Supprimer la chronique">delete</span>
 							</a>
 						</td>
 					</tr>

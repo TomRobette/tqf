@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Genre;
 use App\Form\AjoutGenreType;
+use App\Form\ModifGenreType;
 use Symfony\Component\HttpFoundation\Request;
 
 class GenreController extends AbstractController
@@ -59,6 +60,33 @@ class GenreController extends AbstractController
             
         return $this->render('genre/liste.html.twig', [
             'genre'=>$genre
+        ]);
+    }
+    
+    /**
+    * @Route("/modifGenre/{id}", name="modifGenre", requirements={"id"="\d+"})
+    */
+    public function modifGenre(int $id, Request $request)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $em = $this->getDoctrine();
+        $repoGenre = $em->getRepository(Genre::class);
+        $genre = $repoGenre->find($id);
+        $form = $this->createForm(ModifGenreType::class,$genre);
+
+        if ($request->isMethod('POST')) {            
+            $form->handleRequest($request);            
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($genre);
+                $em->flush();
+                $this->addFlash('notice','Genre modifié');
+                return $this->redirectToRoute('listeGenres');        
+            }          
+        } 
+
+        return $this->render('genre/modif.html.twig', [            
+            'form'=>$form->createView()        
         ]);
     }
 }

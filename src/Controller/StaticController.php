@@ -16,6 +16,16 @@ use App\Form\ModifChroniqueType;
 class StaticController extends AbstractController
 {
     /**
+     * @Route("/pageAdmin", name="pageAdmin")
+     */
+    public function pageAdmin()
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        return $this->render('static/pageAdmin.html.twig', [
+        ]);
+    }
+
+    /**
      * @Route("/apropos", name="apropos")
      */
     public function apropos()
@@ -91,25 +101,20 @@ class StaticController extends AbstractController
         $em = $this->getDoctrine();
         $repoChronique = $em->getRepository(Chronique::class);
     
-        $chroniques = $repoChronique->findBy(array(), array('id'=>'ASC'));
+        $chroniques = $repoChronique->findBy(array(), array('date'=>'DESC'));
       
         if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {  
             $jsonData = array();  
             $idx = 0;  
             foreach($chroniques as $chronique) {  
-                $temp = array(
-                    'id' => $chronique->getId(),
-                    'texte' => $chronique->getTexte(),  
-                    'date' => $chronique->getDate(),  
-                );   
+                $temp = ['id' => $chronique->getId(), 'texte' => $chronique->getTexte(), 'date' => $chronique->getDate()->format("d-m-Y")];   
                 $jsonData[$idx++] = $temp;  
             }
-            return new JsonResponse($jsonData); 
+            return $this->json($jsonData); 
         } else { 
             return $this->render('static/chronique.html.twig'); 
         } 
     }
-
     
     /**
      * @Route("/ajoutChronique", name="ajoutChronique")
@@ -161,6 +166,31 @@ class StaticController extends AbstractController
 
         return $this->render('static/modifChronique.html.twig', [            
             'form'=>$form->createView()        
+        ]);
+    }
+
+    /**
+    * @Route("/listeChroniques", name="listeChroniques")
+    */
+    public function listeChroniques(Request $request)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $em = $this->getDoctrine();
+        $repoChronique = $em->getRepository(Chronique::class);
+
+        if($request->get('supp')!=null){
+            $chronique = $repoChronique->find($request->get('supp'));
+            if($chronique!=null){
+                $em->getManager()->remove($chronique);
+                $em->getManager()->flush();
+            }
+            $this->redirectToRoute('listeChroniques');
+        }
+    
+        $chroniques = $repoChronique->findBy(array(), array('id'=>'ASC'));
+            
+        return $this->render('static/listeChroniques.html.twig', [
+            'chroniques'=>$chroniques
         ]);
     }
 }

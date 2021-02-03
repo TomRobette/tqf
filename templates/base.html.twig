@@ -272,7 +272,7 @@
 								<a href="#">Nous contacter</a>
 							</li>
 							<li>
-								<a href="#">Chronique</a>
+								<a href="{{path('chronique')}}">Chronique</a>
 							</li>
 							<li>
 								<a href="#">Mentions Légales</a>
@@ -288,20 +288,12 @@
 										Se connecter
 									</a>
 								</li>
-								{# <li>
-									<a href="{{ path('inscrire')}}">Inscrire un utilisateur</a>
-								</li> #}
 							{% else %}
 
 								{% if is_granted('ROLE_ADMIN') %}
 									<li>
-										<a class="text-info" href="#">
+										<a class="text-info" href="{{ path('pageAdmin')}}">
 											Page administrateur
-										</a>
-									</li>
-									<li>
-										<a href="{{ path('inscrire')}}">
-											Inscrire un nouvel utilisateur
 										</a>
 									</li>
 								{% endif %}
@@ -309,18 +301,6 @@
 									<a class="text-info" href="{{ path('app_logout')}}">
 										Se déconnecter
 									</a>
-								</li>
-								<li>
-									<a href="{{ path('listeGenres')}}">Liste des Genres</a>
-								</li>
-								<li>
-									<a href="{{ path('ajoutGenre')}}">Ajouter un Genre</a>
-								</li>
-								<li>
-									<a href="{{ path('ajoutAuteur')}}">Ajouter un Auteur</a>
-								</li>
-								<li>
-									<a href="{{ path('ajoutOeuvre')}}">Ajouter une Oeuvre</a>
 								</li>
 							{% endif %}
 						</ul>
