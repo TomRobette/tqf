@@ -2,6 +2,21 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.2.9] - (03-02-2021)
+
+### Ajouté
+- Création du formulaire ContactType
+- Ajout du contrôleur contact
+- Installation de postfix (3, serveur1.arras-sio.com)
+- Modification du .env.local pour MAILER
+- Installation de symfony/swiftmailer-bundle
+- Ajout de email.html.twig dans static/ pour avoir une base de mail propre
+
+### Modifié
+
+### Réglé
+- Correction du problème de Checkbox obligatoirement cochée dans les formulaires AjoutOeuvre et ModifOeuvre
+
 ## [v0.2.8] - (03-02-2021)
 
 ### Ajouté
@@ -22,7 +37,7 @@ Ici sont notés les ajouts, modifications et réglages de bugs selon les version
 
 ### Réglé
 - Changement de "return new JsonResponse($data);" en "return $this->json($data);" dans le contrôleur chronique
-- Réglage du problème de carousel qui se chevauche
+- Correction du problème de carousel qui se chevauche
 
 ## [v0.2.7] - (01-02-2021)
 

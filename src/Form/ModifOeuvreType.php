@@ -81,8 +81,7 @@ class ModifOeuvreType extends AbstractType
             'help' => 'Obligatoire',
         ])
         ->add('statut', CheckboxType::class, [
-            'required' => true,
-            'help' => 'Obligatoire',
+            'required' => false,
         ])
         ->add('codePP', TextType::class, [
             'required' => false,

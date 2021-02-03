@@ -12,6 +12,7 @@ use App\Form\AjoutAproposType;
 use App\Form\ModifAproposType;
 use App\Form\AjoutChroniqueType;
 use App\Form\ModifChroniqueType;
+use App\Form\ContactType;
 
 class StaticController extends AbstractController
 {
@@ -193,4 +194,29 @@ class StaticController extends AbstractController
             'chroniques'=>$chroniques
         ]);
     }
+
+    /**
+    * @Route("/contact", name="contact")
+    */
+    public function contact(Request $request, \Swift_Mailer $mailer)
+    {
+    $form = $this->createForm(ContactType::class);
+    if ($request->isMethod('POST')) {
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash('notice','Message envoyé');
+
+            $message = (new \Swift_Message($form->get('subject')->getData()))
+            ->setFrom($form->get('email')->getData())
+            ->setTo('robettetom@gmail.com')
+            ->setBody($this->renderView('static/email.html.twig', array('name'=>$form->get('name')->getData(),'subject'=>$form->get('subject')->getData(),'message'=>$form->get('message')->getData())), 'text/html');
+            $mailer->send($message);
+            return $this->redirectToRoute('contact');
+        }
+    }
+    return $this->render('static/contact.html.twig', [
+    'form'=>$form->createView()
+    ]);
+ }
+
 }
