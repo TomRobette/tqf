@@ -1,60 +1,156 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{ parent()}}| Auteurs
+	{{ parent()}}| Oeuvres
 {% endblock %}
 
 {% block body %}
 	<div class="container-fluid">
 		<div class="row justify-content-center">
-			<h1 class="text-center text-primary p-4">Liste des Oeuvres</h1>
+			<h1 class="text-center text-primary p-4">
+				<a class="nav-link" href="{{path('listeOeuvres')}}">Les oeuvres</a>
+			</h1>
 		</div>
-		<div class="row row-cols-1 row-cols-md-6 g-4">
-			{% set i = 0 %}
-			{% for oeuvre in oeuvre %}
-				<div class="col mt-3">
-					<a class="card-linker" href="{{path('oeuvre',{'id':oeuvre.id})}}">
-						<div class="card">
-							<img src="{{images[i]}}" class="card-img-top" alt="..."/>
-							<div class="card-body">
-								<p class="card-text">
-									{% set adder = "" %}
-									{% set cpt = 0 %}
-									{% for aut in oeuvre.auteurs %}
-										{{aut.prenom|capitalize}}
-										{{aut.nom|upper}}
-										{% if oeuvre.auteurs|length == 1 %}
-										{% elseif oeuvre.auteurs|length == 2 %}
-											{% set adder = " & " %}
-										{% else %}
-											{% set adder = ", " %}
-										{% endif %}
-										{% if cpt < oeuvre.auteurs|length - 1 %}
-											{{adder}}
-										{% endif %}
-										{% set cpt = cpt + 1 %}
-									{% endfor %}
-								</p>
-								<h5 class="card-title">{{oeuvre.titre|capitalize}}</h5>
 
-								<p class="card-text">
-									<small class="text-muted">{{oeuvre.noteStatut|capitalize}}</small>
-								</p>
-								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-									<a href="{{path('listeOeuvres',{'supp':oeuvre.id})}}">
-										<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
-									</a>
-									<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
-										<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
-									</a>
-								{% endif %}	
-							</div>
+		<div class="text-center">
+			<ul class="pagination cc_cursor flex-wrap">
+				{% for letter in 'a'|upper..'z'|upper %}
+					<li class="page-item
+											{% if letter == char %}
+												active
+										    {% endif %}
+											">
+						<a class="page-link cc_pointer" href="{{path('listeOeuvres',{'char': letter })}}">{{ letter }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+		{% if char is not null %}
+			{% if oeuvre|length > 0 %}
+				<div class="row row-cols-1 row-cols-md-6 g-4">
+					{% set i = 0 %}
+					{% for oeuvre in oeuvre %}
+						<div class="col mt-3">
+							<a class="card-linker" href="{{path('oeuvre',{'id':oeuvre.id})}}">
+								<div class="card">
+									<img src="{{images[i]}}" class="card-img-top" alt="..."/>
+									<div class="card-body">
+										<p class="card-text">
+											{% set adder = "" %}
+											{% set cpt = 0 %}
+											{% for aut in oeuvre.auteurs %}
+												{{aut.prenom|capitalize}}
+												{{aut.nom|upper}}
+												{% if oeuvre.auteurs|length == 1 %}
+													{% elseif oeuvre.auteurs|length == 2 %}
+														{% set adder = " & " %}
+													{% else %}
+														{% set adder = ", " %}
+												{% endif %}
+												{% if cpt < oeuvre.auteurs|length - 1 %}
+													{{adder}}
+												{% endif %}
+												{% set cpt = cpt + 1 %}
+											{% endfor %}
+										</p>
+										<h5 class="card-title">{{oeuvre.titre|capitalize}}</h5>
+
+										<p class="card-text">
+											<small class="text-muted">{{oeuvre.noteStatut|capitalize}}</small>
+										</p>
+										{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+											<a href="{{path('listeOeuvres',{'supp':oeuvre.id})}}">
+												<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
+											</a>
+											<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
+												<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
+											</a>
+										{% endif %}
+									</div>
+								</div>
+							</a>
+
 						</div>
-					</a>
-
+						{% set i = i + 1 %}
+					{% endfor %}
 				</div>
-				{% set i = i + 1 %}
-			{% endfor %}
-		</div>
+
+			{% else %}
+				<p class="text-center text-primary">Nous sommes navrés, mais aucune oeuvre ne se trouve
+					{% if char is not null %}
+						dans les "{{char}}"
+					{% else %}
+						ici.
+					{% endif %}
+				</p>
+			{% endif %}
+		{% else %}
+			<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">Titre</th>
+					<th scope="col">Auteur(s)</th>
+					<th scope="col">Disponibilité</th>
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<th scope="col"></th>
+						<th scope="col"></th>
+					{% endif %}	
+				</tr>
+			</thead>
+			<tbody>
+				{% set i = 0 %}
+				{% for oeuvre in oeuvre %}
+					<tr class='clickable-row' data-href='{{path('oeuvre',{'id':oeuvre.id})}}'>
+						<td>{{oeuvre.titre|capitalize}}</td>
+						<td>
+							{% set adder = "" %}
+							{% set cpt = 0 %}
+							{% for aut in oeuvre.auteurs %}
+								{{aut.prenom|capitalize}}
+								{{aut.nom|upper}}
+								{% if oeuvre.auteurs|length == 1 %}
+								{% elseif oeuvre.auteurs|length == 2 %}
+									{% set adder = " & " %}
+								{% else %}
+									{% set adder = ", " %}
+								{% endif %}
+								{% if cpt < oeuvre.auteurs|length - 1 %}
+									{{adder}}
+								{% endif %}
+								{% set cpt = cpt + 1 %}
+							{% endfor %}
+						</td>
+						<td>
+							{{oeuvre.noteStatut|capitalize}}
+						</td>
+						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<td>
+							<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
+								<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
+							</a>
+						</td>
+						<td>
+							<a href="{{path('listeOeuvres',{'supp':oeuvre.id})}}">
+								<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
+							</a>
+						</td>
+						{% endif %}
+					</tr>
+				{% endfor %}
+			</tbody>
+        </table>
+		{% endif %}
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script>
+		jQuery(document).ready(function($) {
+    		$(".clickable-row").click(function() {
+       			window.location = $(this).data("href");
+    		});
+		});
+	</script>
 {% endblock %}

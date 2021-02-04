@@ -80,8 +80,14 @@ class OeuvreController extends AbstractController
             }
             $this->redirectToRoute('listeOeuvres');
         }
+        $char = null;
+        if($request->get('char')!=null){
+            $char = $request->get('char');
+            $oeuvre = $repoOeuvre->findBy(array('caractere' => $char), array('titre'=>'ASC'));
+        }else{
+            $oeuvre = $repoOeuvre->findBy(array(), array('titre'=>'ASC'));
+        }
     
-        $oeuvre = $repoOeuvre->findBy(array(), array('titre'=>'ASC'));
         $images = array();
         foreach($oeuvre as $i){
             if($i->getCouverture()==null){
@@ -96,7 +102,8 @@ class OeuvreController extends AbstractController
             
         return $this->render('oeuvre/liste.html.twig', [
             'oeuvre'=>$oeuvre,
-            'images'=>$images
+            'images'=>$images,
+            'char'=> $char
         ]);
     }
 

@@ -2,6 +2,19 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.2.10] - (04-02-2021)
+
+### Ajouté
+- Ajout d'un alphabet de navigation dans la vue listeOeuvre
+- Ajout d'un get('char') pour le contrôleur listeOeuvres
+
+### Modifié
+- Ajout d'un champ "caractere" dans l'entité Oeuvre
+- Ajout du champ caractere dans les formulaires modifOeuvre et ajoutOeuvre
+- Ajout du champ caractere dans les vues modifOeuvre et ajoutOeuvre
+
+### Réglé
+
 ## [v0.2.9] - (03-02-2021)
 
 ### Ajouté

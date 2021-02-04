@@ -95,6 +95,11 @@ class Oeuvre
      */
     private $codePP;
 
+    /**
+     * @ORM\Column(type="string", length=1)
+     */
+    private $caractere;
+
     public function __construct()
     {
         $this->auteurs = new ArrayCollection();
@@ -294,6 +299,18 @@ class Oeuvre
     public function setCodePP(?string $codePP): self
     {
         $this->codePP = $codePP;
+
+        return $this;
+    }
+
+    public function getCaractere(): ?string
+    {
+        return $this->caractere;
+    }
+
+    public function setCaractere(string $caractere): self
+    {
+        $this->caractere = $caractere;
 
         return $this;
     }

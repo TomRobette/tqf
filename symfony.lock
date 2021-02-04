@@ -299,18 +299,6 @@
     "symfony/intl": {
         "version": "v5.2.1"
     },
-    "symfony/mailer": {
-        "version": "4.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.3",
-            "ref": "15658c2a0176cda2e7dba66276a2030b52bd81b2"
-        },
-        "files": [
-            "config/packages/mailer.yaml"
-        ]
-    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -321,7 +309,7 @@
         }
     },
     "symfony/mime": {
-        "version": "v5.2.1"
+        "version": "v5.2.3"
     },
     "symfony/monolog-bridge": {
         "version": "v5.2.1"

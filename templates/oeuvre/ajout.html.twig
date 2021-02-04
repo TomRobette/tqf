@@ -20,6 +20,11 @@
 				{{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
+				{{ form_label(form.caractere, 'Le premier caractère EN MAJUSCULE du titre (nécessaire pour un tri logique)', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.caractere) }}</span></small>
+				{{ form_widget(form.caractere, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
 				{{ form_label(form.noteStatut, 'Le statut de l\'oeuvre (Disponible, rupture de stock, chez nos partenaires, etc)', {'label_attr': {'class': 'font-weight-bold'}}) }}
 				<small><span class="badge badge-info">{{ form_help(form.noteStatut) }}</span></small>
 				{{ form_widget(form.noteStatut, {'attr': {'class': 'form-control'}}) }}

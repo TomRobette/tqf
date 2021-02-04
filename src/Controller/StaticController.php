@@ -204,13 +204,13 @@ class StaticController extends AbstractController
     if ($request->isMethod('POST')) {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->addFlash('notice','Message envoyé');
 
             $message = (new \Swift_Message($form->get('subject')->getData()))
             ->setFrom($form->get('email')->getData())
-            ->setTo('robettetom@gmail.com')
+            ->setTo('pepitttto@outlook.com')
             ->setBody($this->renderView('static/email.html.twig', array('name'=>$form->get('name')->getData(),'subject'=>$form->get('subject')->getData(),'message'=>$form->get('message')->getData())), 'text/html');
             $mailer->send($message);
+            $this->addFlash('notice','Message envoyé');
             return $this->redirectToRoute('contact');
         }
     }

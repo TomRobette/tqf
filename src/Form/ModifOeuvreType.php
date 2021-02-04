@@ -28,6 +28,10 @@ class ModifOeuvreType extends AbstractType
             'required' => true,
             'help' => 'Obligatoire',
         ])
+        ->add('caractere', TextType::class, [
+            'required' => true,
+            'help' => 'Obligatoire',
+        ])
         ->add('noteStatut', TextType::class, [
             'required' => true,
             'help' => 'Obligatoire',
