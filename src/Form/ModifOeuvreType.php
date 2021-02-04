@@ -54,8 +54,7 @@ class ModifOeuvreType extends AbstractType
             'years' => range(date('Y')-1500, date('Y')),
         ])
         ->add('note', TextType::class, [
-            'required' => true,
-            'help' => 'Obligatoire',
+            'required' => false,
         ])
         ->add('prix', MoneyType::class, [
             'required' => true,

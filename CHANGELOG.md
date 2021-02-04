@@ -2,6 +2,18 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.2.11] - (04-02-2021)
+
+### Ajouté
+- Mise en place du lien vers contact
+- Ajout d'un contrôleur listeLivresPhoto
+- Ajout d'une vue listePhoto
+- Mise en place du lien vers listeLivresPhoto
+
+### Modifié
+
+### Réglé
+
 ## [v0.2.10] - (04-02-2021)
 
 ### Ajouté

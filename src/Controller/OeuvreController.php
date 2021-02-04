@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Entity\Fichier;
 use App\Entity\Oeuvre;
+use App\Entity\Genre;
 use App\Form\AjoutOeuvreType;
 use App\Form\ModifOeuvreType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -101,6 +102,51 @@ class OeuvreController extends AbstractController
         }
             
         return $this->render('oeuvre/liste.html.twig', [
+            'oeuvre'=>$oeuvre,
+            'images'=>$images,
+            'char'=> $char
+        ]);
+    }
+
+    /**
+    * @Route("/listeLivresPhoto", name="listeLivresPhoto")
+    */
+    public function listeLivresPhoto(Request $request)
+    {
+        $em = $this->getDoctrine();
+        $repoOeuvre = $em->getRepository(Oeuvre::class);
+
+        if($request->get('supp')!=null){
+            $oeuvre = $repoOeuvre->find($request->get('supp'));
+            if($oeuvre!=null){
+                $em->getManager()->remove($oeuvre);
+                $em->getManager()->flush();
+            }
+            $this->redirectToRoute('listeOeuvres');
+        }
+        $char = null;
+        $repoGenre = $em->getRepository(Genre::class);
+        $genre = $repoGenre->findBy(array('libelle' => 'Livre Photo'), array());
+        if($request->get('char')!=null){
+            $char = $request->get('char');
+            $oeuvre = $repoOeuvre->findBy(array('genre' => $genre, 'caractere' => $char), array('titre'=>'ASC'));
+        }else{
+            $oeuvre = $repoOeuvre->findBy(array('genre' => $genre), array('titre'=>'ASC'));
+        }
+    
+        $images = array();
+        foreach($oeuvre as $i){
+            if($i->getCouverture()==null){
+                $path = $this->getParameter('couv_directory').'/default.png';
+            }else{
+                $path = $this->getParameter('couv_directory').'/'.$i->getCouverture()->getNom();
+            }
+            $data = file_get_contents($path);
+            $base64 = 'data:image/png;base64,'.base64_encode($data);
+            array_push($images,$base64);
+        }
+            
+        return $this->render('oeuvre/listePhoto.html.twig', [
             'oeuvre'=>$oeuvre,
             'images'=>$images,
             'char'=> $char
