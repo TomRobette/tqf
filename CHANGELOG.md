@@ -2,6 +2,18 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.3.1] - (05-02-2021)
+
+### Ajouté
+- Mise en place du lien vers parutions
+
+### Modifié
+- Refonte de l'affichage de listeOeuvres
+- Refonte de l'affichage de listeLivresPhoto
+- Refonte en deux colonnes de parutions
+
+### Réglé
+
 ## [v0.3] - (05-02-2021)
 
 ### Ajouté

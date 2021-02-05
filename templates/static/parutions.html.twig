@@ -12,44 +12,82 @@
 				<a class="nav-link" href="{{path('listeOeuvres')}}">Parutions récentes et à venir</a>
 			</h1>
 		</div>
-		{% if oeuvre|length > 0 %}
-			<div class="list-group list-group-flush">
+		{% if oeuvres|length > 0 %}
+			<div class="row">
 				{% set i = 0 %}
-				{% for oeuvre in oeuvre %}
-  					<a href="{{path('oeuvre',{'id':oeuvre.id})}}" class="list-group-item list-group-item-action  border-0">
-						<h5 class="card-title">{{oeuvre.titre|capitalize}}</h5>
+				<div class="col-sm-6">
+					<div class="list-group list-group-flush">
+						{% for oeuvre in oeuvres|slice(0, oeuvres|length/2) %}
+							<a href="{{path('oeuvre',{'id':oeuvre.id})}}" class="list-group-item list-group-item-action  border-0">
+								<h5 class="card-title">{{oeuvre.titre|capitalize}}</h5>
 								{% set adder = "" %}
-										{% set cpt = 0 %}
-										{% for aut in oeuvre.auteurs %}
-											{{aut.prenom|capitalize}}
-											{{aut.nom|upper}}
-											{% if oeuvre.auteurs|length == 1 %}
-												{% elseif oeuvre.auteurs|length == 2 %}
-													{% set adder = " & " %}
-												{% else %}
-													{% set adder = ", " %}
-											{% endif %}
-											{% if cpt < oeuvre.auteurs|length - 1 %}
-												{{adder}}
-											{% endif %}
-											{% set cpt = cpt + 1 %}
-										{% endfor %}
-					  	<small class="text-muted">{{oeuvre.noteStatut|capitalize}}</small>
-						<p class="text text-right">
-						{% if oeuvre.datePublication > date() %}
-						Paraît le 
-						{% else %}
-						Paru le
-						{% endif %}
-						
-						{{oeuvre.datePublication|date('d-m-Y')}}</p>
-					</a>
-					{% set i = i + 1 %}
-				{% endfor %}
+								{% set cpt = 0 %}
+								{% for aut in oeuvre.auteurs %}
+									{{aut.prenom|capitalize}}
+									{{aut.nom|upper}}
+									{% if oeuvre.auteurs|length == 1 %}
+										{% elseif oeuvre.auteurs|length == 2 %}
+											{% set adder = " & " %}
+										{% else %}
+											{% set adder = ", " %}
+									{% endif %}
+									{% if cpt < oeuvre.auteurs|length - 1 %}
+										{{adder}}
+									{% endif %}
+									{% set cpt = cpt + 1 %}
+								{% endfor %}
+								<small class="text-muted">{{oeuvre.noteStatut|capitalize}}</small>
+								<p class="text text-right">
+									{% if oeuvre.datePublication > date() %}
+										Paraît le
+									{% else %}
+										Paru le
+									{% endif %}
+
+									{{oeuvre.datePublication|date('d-m-Y')}}</p>
+							</a>
+							{% set i = i + 1 %}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="list-group list-group-flush">
+						{% for oeuvre in oeuvres|slice(oeuvres|length/2, oeuvres|length) %}
+							<a href="{{path('oeuvre',{'id':oeuvre.id})}}" class="list-group-item list-group-item-action  border-0">
+								<h5 class="card-title">{{oeuvre.titre|capitalize}}</h5>
+								{% set adder = "" %}
+								{% set cpt = 0 %}
+								{% for aut in oeuvre.auteurs %}
+									{{aut.prenom|capitalize}}
+									{{aut.nom|upper}}
+									{% if oeuvre.auteurs|length == 1 %}
+										{% elseif oeuvre.auteurs|length == 2 %}
+											{% set adder = " & " %}
+										{% else %}
+											{% set adder = ", " %}
+									{% endif %}
+									{% if cpt < oeuvre.auteurs|length - 1 %}
+										{{adder}}
+									{% endif %}
+									{% set cpt = cpt + 1 %}
+								{% endfor %}
+								<small class="text-muted">{{oeuvre.noteStatut|capitalize}}</small>
+								<p class="text text-right">
+									{% if oeuvre.datePublication > date() %}
+										Paraît le
+									{% else %}
+										Paru le
+									{% endif %}
+
+									{{oeuvre.datePublication|date('d-m-Y')}}</p>
+							</a>
+							{% set i = i + 1 %}
+						{% endfor %}
+					</div>
+				</div>
 			</div>
-		
 		{% else %}
 			<p class="text-center text-primary">Nous sommes navrés, mais aucune oeuvre n'a été ajoutée ces 3 dernières années.</p>
-		{% endif %}	
+		{% endif %}
 	</div>
 {% endblock %}

@@ -5,7 +5,6 @@ Ici sont les élèments à faire ou finir
 ## À faire
 
 ### Obligatoire
-- Faire la page Parutions (05/02/2021)
 - Faire la page Bibliophilie (05/02/2021)
 - Faire la page Les amis du temps qu'il fait (05/02/2021)
 - Faire le système de recherche (05/02/2021)
@@ -32,6 +31,7 @@ Ici sont les élèments à faire ou finir
 - Faire le système d'achat Paypal (05/02/2021)
 - Supprimer l'onglet commande (05/02/2021)
 - Faire la page d'accueil (05/02/2021)
+- Faire la page Parutions (05/02/2021)
 
 ### Optionnel
 - Modifier la liste des auteurs en alpha (05/02/2021)

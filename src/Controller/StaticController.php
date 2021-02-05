@@ -261,7 +261,7 @@ class StaticController extends AbstractController
         }
             
         return $this->render('static/parutions.html.twig', [
-            'oeuvre'=>$oeuvre,
+            'oeuvres'=>$oeuvre,
             'images'=>$images
         ]);
     }
