@@ -175,7 +175,10 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark cc_cursor">
-			<a class="navbar-brand" href="{{ path('accueil')}}">Le temps qu'il fait</a>
+			<a class="nav-link text-light" href="#">
+				Les amis du
+			</a>
+			<a class="navbar-brand" href="{{ path('accueil')}}" alt="Accueil">Le temps qu'il fait</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -208,15 +211,15 @@
 						</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link text-light" href="#">
-							Les amis du temps qu'il fait
+						<a class="nav-link text-light" href="{{path('chronique')}}">
+							Chronique
 						</a>
 					</li>
-					<li class="nav-item active">
+					{# <li class="nav-item active">
 						<a class="nav-link text-light" href="#">
 							Commande
 						</a>
-					</li>
+					</li> #}
 				</ul>
 			</div>
 		</nav>
@@ -270,9 +273,6 @@
 							</li>
 							<li>
 								<a href="{{path('contact')}}">Nous contacter</a>
-							</li>
-							<li>
-								<a href="{{path('chronique')}}">Chronique</a>
 							</li>
 							<li>
 								<a href="#">Mentions Légales</a>

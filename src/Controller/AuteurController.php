@@ -81,7 +81,15 @@ class AuteurController extends AbstractController
             $this->redirectToRoute('listeAuteurs');
         }
     
-        $auteur = $repoAuteur->findBy(array(), array('nom'=>'ASC'));
+        $char = null;
+        if($request->get('char')!=null){
+            $char = $request->get('char');
+            $auteur = $repoAuteur->findBy(array('caractere' => $char), array('nom'=>'ASC'));
+        }else{
+            $auteur = $repoAuteur->findBy(array(), array('nom'=>'ASC'));
+        }
+
+        
         $images = array();
         foreach($auteur as $i){
             if($i->getImage()==null){
@@ -96,7 +104,8 @@ class AuteurController extends AbstractController
             
         return $this->render('auteur/liste.html.twig', [
             'auteur'=>$auteur,
-            'images'=>$images
+            'images'=>$images,
+            'char'=>$char
         ]);
     }
 

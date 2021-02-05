@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}| Parutions
+{% endblock %}
+
+{% block body %}
+	{{parent()}}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<h1 class="text-center text-primary p-4">
+				<a class="nav-link" href="{{path('listeOeuvres')}}">Parutions récentes et à venir</a>
+			</h1>
+		</div>
+		{% if oeuvre|length > 0 %}
+			<div class="list-group list-group-flush">
+				{% set i = 0 %}
+				{% for oeuvre in oeuvre %}
+  					<a href="{{path('oeuvre',{'id':oeuvre.id})}}" class="list-group-item list-group-item-action  border-0">
+						<h5 class="card-title">{{oeuvre.titre|capitalize}}</h5>
+								{% set adder = "" %}
+										{% set cpt = 0 %}
+										{% for aut in oeuvre.auteurs %}
+											{{aut.prenom|capitalize}}
+											{{aut.nom|upper}}
+											{% if oeuvre.auteurs|length == 1 %}
+												{% elseif oeuvre.auteurs|length == 2 %}
+													{% set adder = " & " %}
+												{% else %}
+													{% set adder = ", " %}
+											{% endif %}
+											{% if cpt < oeuvre.auteurs|length - 1 %}
+												{{adder}}
+											{% endif %}
+											{% set cpt = cpt + 1 %}
+										{% endfor %}
+					  	<small class="text-muted">{{oeuvre.noteStatut|capitalize}}</small>
+						<p class="text text-right">
+						{% if oeuvre.datePublication > date() %}
+						Paraît le 
+						{% else %}
+						Paru le
+						{% endif %}
+						
+						{{oeuvre.datePublication|date('d-m-Y')}}</p>
+					</a>
+					{% set i = i + 1 %}
+				{% endfor %}
+			</div>
+		
+		{% else %}
+			<p class="text-center text-primary">Nous sommes navrés, mais aucune oeuvre n'a été ajoutée ces 3 dernières années.</p>
+		{% endif %}	
+	</div>
+{% endblock %}

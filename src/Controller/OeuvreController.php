@@ -38,6 +38,7 @@ class OeuvreController extends AbstractController
                 $fichier->setNom($fileName);
                 $em->persist($fichier);
                 $oeuvre->setCouverture($fichier);
+                $oeuvre->setDateAjout(new \DateTime());
                 $em->persist($oeuvre);
                 $em->flush();
                 try{

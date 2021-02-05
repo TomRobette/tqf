@@ -20,6 +20,11 @@
 				{{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
+				{{ form_label(form.caractere, 'Le premier caractère EN MAJUSCULE du nom (nécessaire pour un tri logique)', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.caractere) }}</span></small>
+				{{ form_widget(form.caractere, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
 				{{ form_label(form.prenom, 'Le prénom de l\'auteur', {'label_attr': {'class': 'font-weight-bold'}}) }}
 					<small><span class="badge badge-info">{{ form_help(form.prenom) }}</span></small>
 					{{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}

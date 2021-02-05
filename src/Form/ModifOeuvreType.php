@@ -27,7 +27,7 @@ class ModifOeuvreType extends AbstractType
         ->add('titre', TextType::class, [
             'required' => true,
             'help' => 'Obligatoire',
-        ])
+        ]) 
         ->add('caractere', TextType::class, [
             'required' => true,
             'help' => 'Obligatoire',
@@ -51,7 +51,7 @@ class ModifOeuvreType extends AbstractType
         ->add('datePublication', DateType::class, [
             'required' => true,
             'help' => 'Obligatoire',
-            'years' => range(date('Y')-1500, date('Y')),
+            'years' => range(date('Y')-1500, date('Y')+3),
         ])
         ->add('note', TextType::class, [
             'required' => false,

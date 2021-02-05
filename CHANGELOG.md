@@ -2,6 +2,28 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.3] - (05-02-2021)
+
+### Ajouté
+- Création d'une checklist pour le projet
+- Ajout d'un bouton dynamique selon codePP dans la vue pageOeuvre
+- Création du contrôleur Parution
+- Création de la vue Parution
+
+### Modifié
+- Onglet commande de la barre de navigation commenté
+- Déplacement de l'onglet Les amis du temps qu'il fait devant celui l'accueil
+- Déplacement de l'onglet Chronique
+- Modification du contrôleur accueil pour afficher les dernières sorties du mois
+- Modification de la vue accueil pour afficher les dernières sorties du mois
+- Ajout du champ dateAjout dans l'entité Oeuvre
+- Ajout de l'auto-insertion de la dateAjout dans ajoutOeuvre
+- Ajout du champs caractere dans l'entité auteur
+- Ajout du champs caractere dans AjoutAuteurType et ModifAuteurType
+- Ajout du champs caractere dans les vues ajoutAuteur et modifAuteur
+
+### Réglé
+
 ## [v0.2.11] - (04-02-2021)
 
 ### Ajouté

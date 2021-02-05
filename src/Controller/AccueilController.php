@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\InscriptionType;
 use App\Entity\User;
+use App\Entity\Oeuvre;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -15,10 +16,47 @@ class AccueilController extends AbstractController
     /**
      * @Route("/accueil", name="accueil")
      */
-    public function index(): Response
+    public function index(Request $request)
     {
+        $em = $this->getDoctrine();
+        $repoOeuvre = $em->getRepository(Oeuvre::class);
+
+        
+        $now = new \DateTime();
+        $daysAgo = $now->sub(new \DateInterval('P30D'));
+        
+
+        if($request->get('supp')!=null){
+            $oeuvre = $repoOeuvre->find($request->get('supp'));
+            if($oeuvre!=null){
+                $em->getManager()->remove($oeuvre);
+                $em->getManager()->flush();
+            }
+            $this->redirectToRoute('accueil');
+        }
+        $oeuvre = $repoOeuvre->createQueryBuilder('i')
+        ->where('i.dateAjout >= :date')
+        ->setParameter('date', $daysAgo)
+        ->orderBy('i.dateAjout', 'DESC')
+        ->getQuery()
+        ->getResult();
+        
+    
+        $images = array();
+        foreach($oeuvre as $i){
+            if($i->getCouverture()==null){
+                $path = $this->getParameter('couv_directory').'/default.png';
+            }else{
+                $path = $this->getParameter('couv_directory').'/'.$i->getCouverture()->getNom();
+            }
+            $data = file_get_contents($path);
+            $base64 = 'data:image/png;base64,'.base64_encode($data);
+            array_push($images,$base64);
+        }
+            
         return $this->render('accueil/index.html.twig', [
-            'controller_name' => 'AccueilController',
+            'oeuvre'=>$oeuvre,
+            'images'=>$images
         ]);
     }
 

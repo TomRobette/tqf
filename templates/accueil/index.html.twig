@@ -4,165 +4,77 @@
 	{{parent()}}| Accueil
 {% endblock %}
 
+{% block stylesheets %}
+{{parent()}}
+	<style>
+		.card-img-top{
+  			height: auto;/* was 100% */
+  			position: relative;
+  			text-align: center;
+			/* create relationship between width and height */
+		}
+			
+	</style>
+{% endblock %}
+
 {% block body %}
 	{{parent()}}
-	<br>
-	<div class="row row-cols-1 row-cols-md-6 g-4">
-		<div class="col mt-3">
-			<a class="card-linker" href=".">
-				<div class="card">
-					<img src="../uploads/couvertures/Artaud(C).jpg" class="card-img-top" alt="..."/>
-					<div class="card-body">
-					    <p class="card-text">Gérard Mordillat & Jérôme Prieur</p>
-						<h5 class="card-title">La véritable histoire d'Artaud de Mômo</h5>
-
-						<p class="card-text">
-							<small class="text-muted">Disponibilité</small>
-						</p>
-					</div>
-				</div>
-			</a>
-
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<h1 class="text-center text-primary p-4">
+				<a class="nav-link" href="{{path('listeOeuvres')}}">Nos dernières oeuvres</a>
+			</h1>
 		</div>
-		<div class="col mt-3">
-			<a class="card-linker" href=".">
-				<div class="card" href="#">
-					<img src="../uploads/couvertures/Revoltes(C).jpg" class="card-img-top" alt="..."/>
-					<div class="card-body">
-						<p class="card-text">Charles Soubeyran, Robert Doisneau, Gilles Ehrmann</p>
-						<h5 class="card-title">Les révoltés du Merveilleux</h5>
+			{% if oeuvre|length > 0 %}
+				<div class="row row-cols-1 row-cols-md-6 g-4">
+					{% set i = 0 %}
+					{% for oeuvre in oeuvre %}
+						<div class="col mt-3">
+							<a class="card-linker" href="{{path('oeuvre',{'id':oeuvre.id})}}">
+								<div class="card">
+									<img src="{{images[i]}}" class="card-img-top" alt="..."/>
+									<div class="card-body">
+										<p class="card-text">
+											{% set adder = "" %}
+											{% set cpt = 0 %}
+											{% for aut in oeuvre.auteurs %}
+												{{aut.prenom|capitalize}}
+												{{aut.nom|upper}}
+												{% if oeuvre.auteurs|length == 1 %}
+													{% elseif oeuvre.auteurs|length == 2 %}
+														{% set adder = " & " %}
+													{% else %}
+														{% set adder = ", " %}
+												{% endif %}
+												{% if cpt < oeuvre.auteurs|length - 1 %}
+													{{adder}}
+												{% endif %}
+												{% set cpt = cpt + 1 %}
+											{% endfor %}
+										</p>
+										<h5 class="card-title">{{oeuvre.titre|capitalize}}</h5>
 
-						<p class="card-text">
-							<small class="text-muted">Disponibilité</small>
-						</p>
-					</div>
+										<p class="card-text">
+											<small class="text-muted">{{oeuvre.noteStatut|capitalize}}</small>
+										</p>
+										{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+											<a href="{{path('accueil',{'supp':oeuvre.id})}}">
+												<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
+											</a>
+											<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
+												<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
+											</a>
+										{% endif %}
+									</div>
+								</div>
+							</a>
+
+						</div>
+						{% set i = i + 1 %}
+					{% endfor %}
 				</div>
-			</a>
-		</div>
-		<div class="col mt-3">
-			<a class="card-linker" href=".">
-				<div class="card" href="#">
-					<img src="../uploads/couvertures/AllerAumenu(C).jpg" class="card-img-top" alt="..."/>
-					<div class="card-body">
-						<p class="card-text">Auteur</p>
-						<h5 class="card-title">Aller au menu</h5>
-
-						<p class="card-text">
-							<small class="text-muted">Disponibilité</small>
-						</p>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col mt-3">
-			<a class="card-linker" href=".">
-				<div class="card" href="#">
-					<img src="../uploads/couvertures/Velazquez(C).jpg" class="card-img-top" alt="..."/>
-					<div class="card-body">
-						<p class="card-text">Auteur</p>
-						<h5 class="card-title">Le désir de Velazquez</h5>
-
-						<p class="card-text">
-							<small class="text-muted">Disponibilité</small>
-						</p>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col mt-3">
-			<a class="card-linker" href=".">
-				<div class="card" href="#">
-					<img src="../uploads/couvertures/Ademain(C).jpg" class="card-img-top" alt="..."/>
-					<div class="card-body">
-						<p class="card-text">Auteur</p>
-						<h5 class="card-title">À demain</h5>
-
-						<p class="card-text">
-							<small class="text-muted">Disponibilité</small>
-						</p>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-
-	
-	<div class="row row-cols-1 row-cols-md-6 g-4">
-		<div class="col mt-3">
-			<a class="card-linker" href=".">
-				<div class="card">
-					<img src="../uploads/couvertures/Artaud(C).jpg" class="card-img-top" alt="..."/>
-					<div class="card-body">
-					    <p class="card-text">Gérard Mordillat & Jérôme Prieur</p>
-						<h5 class="card-title">La véritable histoire d'Artaud de Mômo</h5>
-
-						<p class="card-text">
-							<small class="text-muted">Disponibilité</small>
-						</p>
-					</div>
-				</div>
-			</a>
-
-		</div>
-		<div class="col mt-3">
-			<a class="card-linker" href=".">
-				<div class="card" href="#">
-					<img src="../uploads/couvertures/Revoltes(C).jpg" class="card-img-top" alt="..."/>
-					<div class="card-body">
-						<p class="card-text">Charles Soubeyran, Robert Doisneau, Gilles Ehrmann</p>
-						<h5 class="card-title">Les révoltés du Merveilleux</h5>
-
-						<p class="card-text">
-							<small class="text-muted">Disponibilité</small>
-						</p>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col mt-3">
-			<a class="card-linker" href=".">
-				<div class="card" href="#">
-					<img src="../uploads/couvertures/AllerAumenu(C).jpg" class="card-img-top" alt="..."/>
-					<div class="card-body">
-						<p class="card-text">Auteur</p>
-						<h5 class="card-title">Aller au menu</h5>
-
-						<p class="card-text">
-							<small class="text-muted">Disponibilité</small>
-						</p>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col mt-3">
-			<a class="card-linker" href=".">
-				<div class="card" href="#">
-					<img src="../uploads/couvertures/Velazquez(C).jpg" class="card-img-top" alt="..."/>
-					<div class="card-body">
-						<p class="card-text">Auteur</p>
-						<h5 class="card-title">Le désir de Velazquez</h5>
-
-						<p class="card-text">
-							<small class="text-muted">Disponibilité</small>
-						</p>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col mt-3">
-			<a class="card-linker" href=".">
-				<div class="card" href="#">
-					<img src="../uploads/couvertures/Ademain(C).jpg" class="card-img-top" alt="..."/>
-					<div class="card-body">
-						<p class="card-text">Auteur</p>
-						<h5 class="card-title">À demain</h5>
-
-						<p class="card-text">
-							<small class="text-muted">Disponibilité</small>
-						</p>
-					</div>
-				</div>
-			</div>
-		</a>
+			{% else %}	
+				<p class="text-center text-primary">Nous sommes navrés, mais aucune oeuvre n'a été ajoutée ces 30 derniers jours.</p>
+			{% endif %}
 	</div>
 {% endblock %}

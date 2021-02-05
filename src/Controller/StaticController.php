@@ -13,6 +13,7 @@ use App\Form\ModifAproposType;
 use App\Form\AjoutChroniqueType;
 use App\Form\ModifChroniqueType;
 use App\Form\ContactType;
+use App\Entity\Oeuvre;
 
 class StaticController extends AbstractController
 {
@@ -218,5 +219,51 @@ class StaticController extends AbstractController
     'form'=>$form->createView()
     ]);
  }
+    /**
+     * @Route("/parutions", name="parutions")
+     */
+    public function parutions(Request $request)
+    {
+        $em = $this->getDoctrine();
+        $repoOeuvre = $em->getRepository(Oeuvre::class);
+
+        
+        $now = new \DateTime();
+        $daysAgo = $now->sub(new \DateInterval('P2Y'));
+        
+
+        if($request->get('supp')!=null){
+            $oeuvre = $repoOeuvre->find($request->get('supp'));
+            if($oeuvre!=null){
+                $em->getManager()->remove($oeuvre);
+                $em->getManager()->flush();
+            }
+            $this->redirectToRoute('accueil');
+        }
+        $oeuvre = $repoOeuvre->createQueryBuilder('i')
+        ->where('i.datePublication >= :date')
+        ->setParameter('date', $daysAgo)
+        ->orderBy('i.datePublication', 'DESC')
+        ->getQuery()
+        ->getResult();
+        
+    
+        $images = array();
+        foreach($oeuvre as $i){
+            if($i->getCouverture()==null){
+                $path = $this->getParameter('couv_directory').'/default.png';
+            }else{
+                $path = $this->getParameter('couv_directory').'/'.$i->getCouverture()->getNom();
+            }
+            $data = file_get_contents($path);
+            $base64 = 'data:image/png;base64,'.base64_encode($data);
+            array_push($images,$base64);
+        }
+            
+        return $this->render('static/parutions.html.twig', [
+            'oeuvre'=>$oeuvre,
+            'images'=>$images
+        ]);
+    }
 
 }

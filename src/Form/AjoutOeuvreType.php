@@ -51,7 +51,7 @@ class AjoutOeuvreType extends AbstractType
             ->add('datePublication', DateType::class, [
                 'required' => true,
                 'help' => 'Obligatoire',
-                'years' => range(date('Y')-1500, date('Y')),
+                'years' => range(date('Y')-1500, date('Y')+3),
             ])
             ->add('note', TextType::class, [
                 'required' => false,

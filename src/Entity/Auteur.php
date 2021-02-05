@@ -69,6 +69,11 @@ class Auteur
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="string", length=1)
+     */
+    private $caractere;
+
     public function __construct()
     {
         $this->oeuvres = new ArrayCollection();
@@ -210,6 +215,18 @@ class Auteur
     public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getCaractere(): ?string
+    {
+        return $this->caractere;
+    }
+
+    public function setCaractere(string $caractere): self
+    {
+        $this->caractere = $caractere;
 
         return $this;
     }

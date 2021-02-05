@@ -100,6 +100,11 @@ class Oeuvre
      */
     private $caractere;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dateAjout;
+
     public function __construct()
     {
         $this->auteurs = new ArrayCollection();
@@ -311,6 +316,18 @@ class Oeuvre
     public function setCaractere(string $caractere): self
     {
         $this->caractere = $caractere;
+
+        return $this;
+    }
+
+    public function getDateAjout(): ?\DateTimeInterface
+    {
+        return $this->dateAjout;
+    }
+
+    public function setDateAjout(\DateTimeInterface $dateAjout): self
+    {
+        $this->dateAjout = $dateAjout;
 
         return $this;
     }

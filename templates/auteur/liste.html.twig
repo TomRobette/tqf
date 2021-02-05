@@ -7,33 +7,109 @@
 {% block body %}
 	<div class="container-fluid">
 		<div class="row justify-content-center">
-			<h1 class="text-center text-primary p-4">Liste des Auteurs</h1>
+			<h1 class="text-center text-primary p-4">
+				<a class="nav-link" href="{{path('listeAuteurs')}}">Les auteurs</a>
+			</h1>
 		</div>
-		<div class="row row-cols-1 row-cols-md-6 g-4">
-			{% set i = 0 %}
-			{% for auteur in auteur %}
-			<div class="col  mt-3">
-			<a class="card-linker" href="{{path('auteur',{'id':auteur.id})}}">
-				<div class="card">
-					<img src="{{images[i]}}" class="card-img-top" alt="..."/>
-					<div class="card-body">
-						<h5 class="card-title">{{auteur.prenom|capitalize}}
-							{{auteur.nom|upper}}</h5>
-							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-								<a href="{{path('listeAuteurs',{'supp':auteur.id})}}">
-									<span class="material-icons text-dark" title="Supprimer l'auteur de la base de données">delete</span>
-								</a>
-								<a href="{{path('modifAuteur',{'id':auteur.id})}}">
-									<span class="material-icons text-dark" title="Modifier l'auteur dans la base de données">create</span>
-								</a>
-							{% endif %}
-					</div>
-				</div>
-			</a>
 
+		<div class="text-center">
+			<ul class="pagination cc_cursor flex-wrap">
+				{% for letter in 'a'|upper..'z'|upper %}
+					<li class="page-item
+											{% if letter == char %}
+												active
+										    {% endif %}
+											">
+						<a class="page-link cc_pointer" href="{{path('listeAuteurs',{'char': letter })}}">{{ letter }}</a>
+					</li>
+				{% endfor %}
+			</ul>
 		</div>
+
+		{# {% if char is not null %} #}
+			{% if auteur|length > 0 %}
+				<div class="row row-cols-1 row-cols-md-6 g-4">
+					{% set i = 0 %}
+					{% for auteur in auteur %}
+					<div class="col  mt-3">
+						<a class="card-linker" href="{{path('auteur',{'id':auteur.id})}}">
+							<div class="card">
+								<img src="{{images[i]}}" class="card-img-top" alt="..."/>
+								<div class="card-body">
+									<h5 class="card-title">{{auteur.prenom|capitalize}}
+									{{auteur.nom|upper}}</h5>
+									{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+										<a href="{{path('listeAuteurs',{'supp':auteur.id})}}">
+											<span class="material-icons text-dark" title="Supprimer l'auteur de la base de données">delete</span>
+										</a>
+										<a href="{{path('modifAuteur',{'id':auteur.id})}}">
+											<span class="material-icons text-dark" title="Modifier l'auteur dans la base de données">create</span>
+										</a>
+									{% endif %}
+								</div>
+							</div>
+						</a>
+					</div>
 					{% set i = i + 1 %}
-			{% endfor %}
-		</div>		
+					{% endfor %}
+				</div>		
+			{% else %}
+				<p class="text-center text-primary">Nous sommes navrés, mais aucun auteur ne se trouve
+					{% if char is not null %}
+						dans les "{{char}}"
+					{% else %}
+						ici.
+					{% endif %}
+				</p>
+			{% endif %}
+		{# {% else %} #}
+			{# <table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">Prénom</th>
+					<th scope="col">Nom(s)</th>
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<th scope="col"></th>
+						<th scope="col"></th>
+					{% endif %}	
+				</tr>
+			</thead>
+			<tbody>
+				{% set i = 0 %}
+				{% for auteur in auteur %}
+					<tr class='clickable-row' data-href='{{path('auteur',{'id':auteur.id})}}'>
+						<td>{{auteur.prenom|capitalize}}</td>
+						<td>{{auteur.nom|upper}}</td>
+						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<td>
+							<a href="{{path('modifAuteur',{'id':auteur.id})}}">
+								<span class="material-icons text-dark" title="Modifier l'auteur dans la base de données">create</span>
+							</a>
+						</td>
+						<td>
+							<a href="{{path('listeAuteurs',{'supp':auteur.id})}}">
+								<span class="material-icons text-dark" title="Supprimer l'auteur de la base de données">delete</span>
+							</a>
+						</td>
+						{% endif %}
+					</tr>
+				{% endfor %}
+			</tbody>
+        </table> #}
+		{# {% endif %} #}
+
+
+		
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script>
+		jQuery(document).ready(function($) {
+    		$(".clickable-row").click(function() {
+       			window.location = $(this).data("href");
+    		});
+		});
+	</script>
 {% endblock %}

@@ -24,6 +24,10 @@ class ModifAuteurType extends AbstractType
             'required' => true,
             'help' => 'Obligatoire',
         ])
+        ->add('caractere', TextType::class, [
+            'required' => true,
+            'help' => 'Obligatoire',
+        ])
         ->add('prenom', TextType::class, [
             'required' => true,
             'help' => 'Obligatoire',
