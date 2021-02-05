@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}| Modif Biblio
+{% endblock %}
+
+
+{% block body %}
+{{parent()}}
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<h1 class="text-center text-primary p-4">Modification d'un tirage</h1>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-8 bg-white p-4 m-0 text-dark">
+			{{ form_start(form) }}
+			<div class="form-group">
+				{{ form_label(form.oeuvre, 'L\'oeuvre associée au tirage', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.oeuvre) }}</span></small>
+				{{ form_widget(form.oeuvre, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.prixTotal, 'Le prix total du tirage', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.prixTotal) }}</span></small>
+				{{ form_widget(form.prixTotal, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.nbExemplaires, 'Le nombre d\'exemplaires du tirage', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.nbExemplaires) }}</span></small>
+				{{ form_widget(form.nbExemplaires, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.note, 'Note', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.note) }}</span></small>
+				{{ form_widget(form.note, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.type, 'Le type de tirage (Livres d\'artiste ou tirage de tête)', {'label_attr': {'class': 'font-weight-bold'}}) }}
+				<small><span class="badge badge-info">{{ form_help(form.type) }}</span></small>
+				{{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.statut, 'La disponibilité du tirage', {'label_attr': {'class': 'font-weight-bold'}}) }}  
+				<small><span class="badge badge-info">{{ form_help(form.statut) }}</span></small>                  
+                {{ form_widget(form.statut, {'attr': {'class': 'form-control'}}) }}       
+            </div>
+			<div class="form-group">
+				{{ form_label(form.image, 'L\'image associée au tirage (peinture originale, gravure, etc)', {'label_attr': {'class': 'font-weight-bold'}}) }}                
+                {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}       
+            </div>
+			<div class="form-group mx-auto text-center">
+				{{ form_widget(form.send, { 'label': "Enregistrer", 'attr': {'class': 'btn font-weight-bold bg-primary text-white mx-auto text-center'}}) }}
+			</div>
+			{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -105,10 +105,16 @@ class Oeuvre
      */
     private $dateAjout;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Biblio::class, mappedBy="oeuvre")
+     */
+    private $biblios;
+
     public function __construct()
     {
         $this->auteurs = new ArrayCollection();
         $this->produits = new ArrayCollection();
+        $this->biblios = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -328,6 +334,36 @@ class Oeuvre
     public function setDateAjout(\DateTimeInterface $dateAjout): self
     {
         $this->dateAjout = $dateAjout;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Biblio[]
+     */
+    public function getBiblios(): Collection
+    {
+        return $this->biblios;
+    }
+
+    public function addBiblio(Biblio $biblio): self
+    {
+        if (!$this->biblios->contains($biblio)) {
+            $this->biblios[] = $biblio;
+            $biblio->setOeuvre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBiblio(Biblio $biblio): self
+    {
+        if ($this->biblios->removeElement($biblio)) {
+            // set the owning side to null (unless already changed)
+            if ($biblio->getOeuvre() === $this) {
+                $biblio->setOeuvre(null);
+            }
+        }
 
         return $this;
     }

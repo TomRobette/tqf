@@ -2,6 +2,29 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.3.2] - (05-02-2021)
+
+### Ajouté
+- Ajout de l'entité Type
+- Ajout de l'entité Biblio
+- Ajout des formulaires AjoutBiblioType et ModifBiblioType
+- Ajout du contrôleur Biblio
+- Ajout d'un répertoire Bibliophilie
+- Ajout d'une route vers le répertoire bibliophilie
+- Ajout des contrôleurs bibliophilie, ajoutBiblio et modifBiblio
+- Ajout des vues bibliophilie, ajoutBiblio et modifBiblio
+- Mise en place du lien vers bibliophilie
+
+### Modifié
+- Refonte de l'affichage de listeOeuvres
+- Refonte de l'affichage de listeLivresPhoto
+- Refonte en deux colonnes de parutions
+- Modification du footer À propos
+- Ajout d'un lien email dans À propos
+
+### Réglé
+- Supression des vues Paiement
+
 ## [v0.3.1] - (05-02-2021)
 
 ### Ajouté

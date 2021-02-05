@@ -7,6 +7,7 @@ parameters:
     couv_directory: '%kernel.project_dir%/uploads/couvertures'
     auteur_directory: '%kernel.project_dir%/uploads/images_auteurs'
     ckeditor_directory: '%kernel.project_dir%/uploads/ckeditor'
+    biblio_directory: '%kernel.project_dir%/uploads/bibliophilie'
 
 services:
     # default configuration for services in *this* file
