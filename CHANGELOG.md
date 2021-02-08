@@ -2,7 +2,7 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
-## [v0.4] - (05-02-2021)
+## [v0.4] - (08-02-2021)
 
 ### Ajouté
 - Installation du bundle vich/uploader-bundle
