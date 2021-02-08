@@ -27,25 +27,8 @@ class AuteurController extends AbstractController
             $form->handleRequest($request);            
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                $fichier = new Fichier();
-                $fichier->setNom($auteur->getImage());
-                $file = $fichier->getNom();
-                $fichier->setExtension($file->guessExtension()); //On récupère l'extension
-                $fichier->setTaille($file->getSize());
-                $fichier->setVraiNom($file->getClientOriginalName());
-                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-                $fichier->setNom($fileName);
-                $em->persist($fichier);
-                $auteur->setImage($fichier);
                 $em->persist($auteur);
                 $em->flush();
-                try{
-                    $file->move($this->getParameter('auteur_directory'),$fileName);
-
-                }catch(FileException $e){
-                    $this->addFlash('notice','Erreur lors de l\'insertion de l\'image');
-                }
-
                 $this->addFlash('notice','Auteur ajouté');
                 return $this->redirectToRoute('accueil');        
             }   
@@ -53,15 +36,6 @@ class AuteurController extends AbstractController
         return $this->render('auteur/ajout.html.twig', [
             'form'=>$form->createView()
         ]);
-    }
-
-    /**     
-     * @return string     
-     */    
-    
-    private function generateUniqueFileName()    
-    {        
-        return md5(uniqid());    
     }
 
     /**
@@ -88,23 +62,9 @@ class AuteurController extends AbstractController
         }else{
             $auteur = $repoAuteur->findBy(array(), array('nom'=>'ASC'));
         }
-
-        
-        $images = array();
-        foreach($auteur as $i){
-            if($i->getImage()==null){
-                $path = $this->getParameter('auteur_directory').'/default.png';
-            }else{
-                $path = $this->getParameter('auteur_directory').'/'.$i->getImage()->getNom();
-            }
-            $data = file_get_contents($path);
-            $base64 = 'data:image/png;base64,'.base64_encode($data);
-            array_push($images,$base64);
-        }
             
         return $this->render('auteur/liste.html.twig', [
             'auteur'=>$auteur,
-            'images'=>$images,
             'char'=>$char
         ]);
     }
@@ -123,17 +83,8 @@ class AuteurController extends AbstractController
             return $this->redirectToRoute('accueil');   
         }
 
-        if($auteur->getImage()==null){
-            $path = $this->getParameter('auteur_directory').'/default.png';
-        }else{
-            $path = $this->getParameter('auteur_directory').'/'.$auteur->getImage()->getNom();
-        }
-        $data = file_get_contents($path);
-        $base64 = 'data:image/png;base64,'.base64_encode($data);
-
         return $this->render('auteur/page.html.twig', [               
-            'auteur'=>$auteur,
-            'base64'=>$base64
+            'auteur'=>$auteur
         ]);
     }
 
@@ -159,24 +110,8 @@ class AuteurController extends AbstractController
             $form->handleRequest($request);            
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                $fichier = new Fichier();
-                $fichier->setNom($auteur->getImage());
-                $file = $fichier->getNom();
-                $fichier->setExtension($file->guessExtension()); //On récupère l'extension
-                $fichier->setTaille($file->getSize());
-                $fichier->setVraiNom($file->getClientOriginalName());
-                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-                $fichier->setNom($fileName);
-                $em->persist($fichier);
-                $auteur->setImage($fichier);
                 $em->persist($auteur);
                 $em->flush();
-                try{
-                    $file->move($this->getParameter('auteur_directory'),$fileName);
-
-                }catch(FileException $e){
-                    $this->addFlash('notice','Erreur lors de l\'insertion de l\'image');
-                }
                 $this->addFlash('notice','Auteur modifié');
                 return $this->redirectToRoute('listeAuteurs');        
             }          

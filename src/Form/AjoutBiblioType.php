@@ -9,9 +9,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use App\Entity\Type;
 use App\Entity\Oeuvre;
 
@@ -50,8 +50,11 @@ class AjoutBiblioType extends AbstractType
                 'required' => true,
                 'help' => 'Obligatoire',
             ])
-            ->add('image', FileType::class, array('label' => 'Fichier à télécharger'), [
+            ->add('imageFile', VichImageType::class, [
                 'required' => false,
+                'allow_delete' => true,
+                'delete_label' => 'Supprimer l\'image',
+                'download_label' => 'Télécharger l\'image',
             ])
             ->add('send', SubmitType::class)
         ;

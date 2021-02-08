@@ -1,0 +1,30 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        couvertures:
+            uri_prefix: ../uploads/couvertures
+            upload_destination: ../uploads/couvertures
+            namer: Vich\UploaderBundle\Naming\Base64Namer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        auteurs:
+            uri_prefix: ../uploads/images_auteurs
+            upload_destination: ../uploads/images_auteurs
+            namer: Vich\UploaderBundle\Naming\Base64Namer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        biblio:
+            uri_prefix: ../uploads/bibliophilie
+            upload_destination: ../uploads/bibliophilie
+            namer: Vich\UploaderBundle\Naming\Base64Namer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

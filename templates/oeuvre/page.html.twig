@@ -11,7 +11,7 @@
 			<div class="row no-gutters">
 				<div class="col-sm-2">
 					<br>
-					<img src="{{base64}}" class="card-img" alt="...">
+					<img src="../{{vich_uploader_asset(oeuvre) }}" class="card-img" alt="...">
 					<br>
 					{% if oeuvre.statut == true and oeuvre.codePP is not null %}
 					<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">

@@ -27,26 +27,8 @@ class BiblioController extends AbstractController
             $form->handleRequest($request);            
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                if($biblio->getImage()!=null){
-                    $fichier = new Fichier();
-                    $fichier->setNom($biblio->getImage());
-                    $file = $fichier->getNom();
-                    $fichier->setExtension($file->guessExtension()); //On récupère l'extension
-                    $fichier->setTaille($file->getSize());
-                    $fichier->setVraiNom($file->getClientOriginalName());
-                    $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-                    $fichier->setNom($fileName);
-                    $em->persist($fichier);
-                    $biblio->setImage($fichier);
-                }
                 $em->persist($biblio);
                 $em->flush();
-                try{
-                    $file->move($this->getParameter('biblio_directory'),$fileName);
-                }catch(FileException $e){
-                    $this->addFlash('notice','Aucune image insérée');
-                }
-
                 $this->addFlash('notice','Tirage ajouté');
                 return $this->redirectToRoute('bibliophilie');        
             }   
@@ -81,23 +63,10 @@ class BiblioController extends AbstractController
             }
             $this->redirectToRoute('bibliophilie');
         }
-    
-        $images = array();
         $biblio = $repoBiblio->findBy(array(), array());
-        foreach($biblio as $i){
-            if($i->getImage()==null){
-                $path = $this->getParameter('biblio_directory').'/default.png';
-            }else{
-                $path = $this->getParameter('biblio_directory').'/'.$i->getImage()->getNom();
-            }
-            $data = file_get_contents($path);
-            $base64 = 'data:image/png;base64,'.base64_encode($data);
-            array_push($images,$base64);
-        }
             
         return $this->render('biblio/bibliophilie.html.twig', [
-            'biblios'=>$biblio,
-            'images'=>$images
+            'biblios'=>$biblio
         ]);
     }
 
@@ -122,28 +91,10 @@ class BiblioController extends AbstractController
             $form->handleRequest($request);            
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                if($biblio->getImage()!=null){
-                    $fichier = new Fichier();
-                    $fichier->setNom($biblio->getImage());
-                    $file = $fichier->getNom();
-                    $fichier->setExtension($file->guessExtension()); //On récupère l'extension
-                    $fichier->setTaille($file->getSize());
-                    $fichier->setVraiNom($file->getClientOriginalName());
-                    $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-                    $fichier->setNom($fileName);
-                    $em->persist($fichier);
-                    $biblio->setImage($fichier);
-                }
                 $em->persist($biblio);
                 $em->flush();
-                try{
-                    $file->move($this->getParameter('biblio_directory'),$fileName);
-
-                }catch(FileException $e){
-                    $this->addFlash('notice','Aucune image insérée');
-                }
                 $this->addFlash('notice','Tirage modifié');
-                return $this->redirectToRoute('listeBiblios');        
+                return $this->redirectToRoute('bibliophilie');        
             }          
         } 
 

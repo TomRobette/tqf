@@ -7,10 +7,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class AjoutAuteurType extends AbstractType
 {
@@ -51,9 +51,12 @@ class AjoutAuteurType extends AbstractType
             ->add('liensWeb', CKEditorType::class, [
                 'required' => false,
             ])
-            ->add('image', FileType::class, array('label' => 'Fichier à télécharger'), [
+            ->add('imageFile', VichImageType::class, [
                 'required' => true,
                 'help' => 'Obligatoire',
+                'allow_delete' => true,
+                'delete_label' => 'Supprimer l\'image',
+                'download_label' => 'Télécharger l\'image',
             ])
             ->add('send', SubmitType::class)
         ;

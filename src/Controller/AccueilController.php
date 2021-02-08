@@ -40,23 +40,9 @@ class AccueilController extends AbstractController
         ->orderBy('i.dateAjout', 'DESC')
         ->getQuery()
         ->getResult();
-        
-    
-        $images = array();
-        foreach($oeuvre as $i){
-            if($i->getCouverture()==null){
-                $path = $this->getParameter('couv_directory').'/default.png';
-            }else{
-                $path = $this->getParameter('couv_directory').'/'.$i->getCouverture()->getNom();
-            }
-            $data = file_get_contents($path);
-            $base64 = 'data:image/png;base64,'.base64_encode($data);
-            array_push($images,$base64);
-        }
-            
+
         return $this->render('accueil/index.html.twig', [
-            'oeuvre'=>$oeuvre,
-            'images'=>$images
+            'oeuvre'=>$oeuvre
         ]);
     }
 

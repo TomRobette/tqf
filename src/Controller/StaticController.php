@@ -246,23 +246,9 @@ class StaticController extends AbstractController
         ->orderBy('i.datePublication', 'DESC')
         ->getQuery()
         ->getResult();
-        
-    
-        $images = array();
-        foreach($oeuvre as $i){
-            if($i->getCouverture()==null){
-                $path = $this->getParameter('couv_directory').'/default.png';
-            }else{
-                $path = $this->getParameter('couv_directory').'/'.$i->getCouverture()->getNom();
-            }
-            $data = file_get_contents($path);
-            $base64 = 'data:image/png;base64,'.base64_encode($data);
-            array_push($images,$base64);
-        }
             
         return $this->render('static/parutions.html.twig', [
-            'oeuvres'=>$oeuvre,
-            'images'=>$images
+            'oeuvres'=>$oeuvre
         ]);
     }
 

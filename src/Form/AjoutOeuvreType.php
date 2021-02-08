@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use App\Entity\Genre;
 use App\Entity\Auteur;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -89,9 +90,12 @@ class AjoutOeuvreType extends AbstractType
             ->add('codePP', TextType::class, [
                 'required' => false,
             ])
-            ->add('couverture', FileType::class, array('label' => 'Fichier à télécharger'), [
+            ->add('imageFile', VichImageType::class, [
                 'required' => true,
                 'help' => 'Obligatoire',
+                'allow_delete' => true,
+                'delete_label' => 'Supprimer l\'image',
+                'download_label' => 'Télécharger l\'image',
             ])
             ->add('send', SubmitType::class)
         ;

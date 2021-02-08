@@ -2,6 +2,40 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.4] - (05-02-2021)
+
+### Ajouté
+- Installation du bundle vich/uploader-bundle
+- Ajout du bundle uploader dans bundle.php
+- Création du fichier vich_uploader.yaml
+- Mise en place du chemin couvertures, auteurs et bibliophilie dans vich_uploader.yaml
+
+### Modifié
+- Changement du bundle CKEditor en 'all' dans bundle.php
+- Changement du champ image de l'entité Biblio en les champs de vich_uploader
+- Modification du champ 'image' des formulaires AjoutBiblioType et ModifBiblioType en 'imageFile' de vich uploader
+- Modification du champ 'image' des vues ajoutBiblio et modifBiblio en 'imageFile' de vich uploader
+- Mise à jour du contrôleur Biblio selon vich uploader
+- Mise à jour de l'entité Oeuvre selon vich uploader
+- Supression des anciennes images
+- Mise à jour des formulaires AjoutOeuvreType et ModifOeuvreType selon vich uploader
+- Mise à jour des vues ajoutOeuvre et modifOeuvre selon vich uploader
+- Mise à jour des vues listeOeuvres et listeLivresPhoto selon vich uploader
+- Mise à jour de la vue accueil selon vich uploader
+- Mise à jour du contrôleur parutions selon vich uploader
+- Mise à jour de l'entité Auteur selon vich uploader
+- Mise à jour des formulaires AjoutAuteurType et ModifAuteurType selon vich uploader
+- Mise à jour des vues ajoutAuteur et modifAuteur selon vich uploader
+- Mise à jour de la vue listeAuteurs selon vich uploader
+- Mise à jour du contrôleur Auteur selon vich uploader
+- Mise à jour du contrôleur Accueil selon vich uploader
+- Changement du namer de vich uploader en base64
+
+### Réglé
+- Changement de la redirection de modifBiblio vers 'listeBiblios' en redirection vers 'bibliophilie'
+- Changement du {{base64}} de pageOeuvre en {{ vich_uploader_asset(oeuvre) }}
+- Ajout de ../ sur les chemons de vich uploader parce que ce n'est pas dynamique...
+
 ## [v0.3.2] - (05-02-2021)
 
 ### Ajouté

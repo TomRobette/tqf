@@ -28,26 +28,8 @@ class OeuvreController extends AbstractController
             $form->handleRequest($request);            
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                $fichier = new Fichier();
-                $fichier->setNom($oeuvre->getCouverture());
-                $file = $fichier->getNom();
-                $fichier->setExtension($file->guessExtension()); //On récupère l'extension
-                $fichier->setTaille($file->getSize());
-                $fichier->setVraiNom($file->getClientOriginalName());
-                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-                $fichier->setNom($fileName);
-                $em->persist($fichier);
-                $oeuvre->setCouverture($fichier);
-                $oeuvre->setDateAjout(new \DateTime());
                 $em->persist($oeuvre);
                 $em->flush();
-                try{
-                    $file->move($this->getParameter('couv_directory'),$fileName);
-
-                }catch(FileException $e){
-                    $this->addFlash('notice','Erreur lors de l\'insertion de l\'image');
-                }
-
                 $this->addFlash('notice','Oeuvre ajouté');
                 return $this->redirectToRoute('accueil');        
             }   
@@ -55,15 +37,6 @@ class OeuvreController extends AbstractController
         return $this->render('oeuvre/ajout.html.twig', [
             'form'=>$form->createView()
         ]);
-    }
-
-    /**     
-     * @return string     
-     */    
-    
-    private function generateUniqueFileName()    
-    {        
-        return md5(uniqid());    
     }
 
     /**
@@ -89,22 +62,9 @@ class OeuvreController extends AbstractController
         }else{
             $oeuvre = $repoOeuvre->findBy(array(), array('titre'=>'ASC'));
         }
-    
-        $images = array();
-        foreach($oeuvre as $i){
-            if($i->getCouverture()==null){
-                $path = $this->getParameter('couv_directory').'/default.png';
-            }else{
-                $path = $this->getParameter('couv_directory').'/'.$i->getCouverture()->getNom();
-            }
-            $data = file_get_contents($path);
-            $base64 = 'data:image/png;base64,'.base64_encode($data);
-            array_push($images,$base64);
-        }
             
         return $this->render('oeuvre/liste.html.twig', [
             'oeuvre'=>$oeuvre,
-            'images'=>$images,
             'char'=> $char
         ]);
     }
@@ -134,22 +94,9 @@ class OeuvreController extends AbstractController
         }else{
             $oeuvre = $repoOeuvre->findBy(array('genre' => $genre), array('titre'=>'ASC'));
         }
-    
-        $images = array();
-        foreach($oeuvre as $i){
-            if($i->getCouverture()==null){
-                $path = $this->getParameter('couv_directory').'/default.png';
-            }else{
-                $path = $this->getParameter('couv_directory').'/'.$i->getCouverture()->getNom();
-            }
-            $data = file_get_contents($path);
-            $base64 = 'data:image/png;base64,'.base64_encode($data);
-            array_push($images,$base64);
-        }
             
         return $this->render('oeuvre/listePhoto.html.twig', [
             'oeuvre'=>$oeuvre,
-            'images'=>$images,
             'char'=> $char
         ]);
     }
@@ -168,17 +115,8 @@ class OeuvreController extends AbstractController
             return $this->redirectToRoute('accueil');   
         }
 
-        if($oeuvre->getCouverture()==null){
-            $path = $this->getParameter('couv_directory').'/default.png';
-        }else{
-            $path = $this->getParameter('couv_directory').'/'.$oeuvre->getCouverture()->getNom();
-        }
-        $data = file_get_contents($path);
-        $base64 = 'data:image/png;base64,'.base64_encode($data);
-
         return $this->render('oeuvre/page.html.twig', [               
             'oeuvre'=>$oeuvre,
-            'base64'=>$base64
         ]);
     }
 
@@ -203,24 +141,8 @@ class OeuvreController extends AbstractController
             $form->handleRequest($request);            
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                $fichier = new Fichier();
-                $fichier->setNom($oeuvre->getCouverture());
-                $file = $fichier->getNom();
-                $fichier->setExtension($file->guessExtension()); //On récupère l'extension
-                $fichier->setTaille($file->getSize());
-                $fichier->setVraiNom($file->getClientOriginalName());
-                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-                $fichier->setNom($fileName);
-                $em->persist($fichier);
-                $oeuvre->setCouverture($fichier);
                 $em->persist($oeuvre);
                 $em->flush();
-                try{
-                    $file->move($this->getParameter('couv_directory'),$fileName);
-
-                }catch(FileException $e){
-                    $this->addFlash('notice','Erreur lors de l\'insertion de l\'image');
-                }
                 $this->addFlash('notice','Oeuvre modifiée');
                 return $this->redirectToRoute('listeOeuvres');        
             }          
