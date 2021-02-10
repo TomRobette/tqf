@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{ parent() }}| Modif User
+{% endblock %}
+{% block body %}
+	<br>
+	<div class="container">
+		{{ form_start(form) }}
+		{{ form_errors(form) }}
+		<div class="row justify-content-center">
+			<h1 class="text-center text-primary p-4">Modification de l'utilisateur</h1>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.email, 'Adresse email :', {'label_attr': {'class': 'col-sm-2 controllabel'}}) }}
+			<small>
+				<span class="text-info">{{ form_help(form.email) }}</span>
+			</small>
+			{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(form.password, 'Mot de passe :', {'label_attr': {'class': 'col-sm-2 controllabel'}}) }}
+			<small>
+				<span class="text-info">{{ form_help(form.password) }}</span>
+			</small>
+			{{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(form.confirmation, 'Confirmation du mot de passe :', {'label_attr': {'class': 'col-sm-2 controllabel'}}) }}
+			<small>
+				<span class="text-info">{{ form_help(form.confirmation) }}</span>
+			</small>
+			{{ form_widget(form.confirmation, {'attr': {'class': 'form-control'}}) }}
+		</div>
+		<div class="form-group mx-auto text-center">
+			{{ form_widget(form.send, { 'label': "Modifier", 'attr': {'class': 'btn font-weight-bold bg-primary text-white mx-auto text-center'}}) }}
+		</div>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

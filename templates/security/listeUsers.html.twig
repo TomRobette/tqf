@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent()}}| Liste Users
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<h1 class="text-center text-primary p-4">Liste des utilisateurs</h1>
+		</div>
+		<div class="row justify-content-center">
+			<h3 class="text-center text-warning p-4"><strong>Faites très attention à ne pas supprimer votre propre compte !</strong></h3>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Email</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr class="{{ cycle(['table-info', 'table-light'], loop.index0)}}">
+						<td>{{user.id}}</td>
+						<td>{{user.email}}</td>
+						<td>
+							<a href="{{path('modifUser',{'id':user.id})}}">
+								<span class="material-icons text-dark" title="Modifier l'utilisateur">create</span>
+							</a>
+						</td>
+						<td>
+							<a href="{{path('listeUsers',{'supp':user.id})}}">
+								<span class="material-icons text-dark" title="Supprimer l'utilisateur">delete</span>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+        </table>    
+	</div>
+{% endblock %}

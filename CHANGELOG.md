@@ -2,6 +2,21 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.4.2] - (10-02-2021)
+
+### Ajouté
+- Création du contrôleur listeUsers
+- Création de la vue listeUsers
+- Création du contrôleur modifUser
+- Création de la vue modifUser
+- Création du formulaire ModifUserType
+
+### Modifié
+
+### Réglé
+- Verrouillage de la page inscrire
+- Verrouillage de la page contact
+
 ## [v0.4.1] - (09-02-2021)+(10-02-2021)
 
 ### Ajouté

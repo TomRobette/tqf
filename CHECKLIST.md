@@ -11,8 +11,6 @@ Ici sont les élèments à faire ou finir
 ### Optionnel
 - Faire le système de recherche (10/02/2021)
 - Améliorer visuellement la pageOeuvre (05/02/2021)
-- Faire une page de contrôle des utilisateurs (05/02/2021)
-- Verrouiller l'accès à la page contact (10/02/2021)
 
 ## À terminer
 
@@ -37,8 +35,10 @@ Ici sont les élèments à faire ou finir
 - Améliorer les cards de la page Bibliophilie (10/02/2021)
 - Faire le JS pour afficher l'image des bibliophilies (10/02/2021)
 - Terminer le système de contact (10/02/2021)
+- Faire une page de contrôle des utilisateurs (10/02/2021)
 
 ### Optionnel
 - Modifier la liste des auteurs en alpha (05/02/2021)
 - Mettre le lien facebook dans le bouton du footer (perso au début) (10/02/2021)
-- Modifier les icônes "Obligatoire" des formulaires pour les rendre plus joli (20/02/2021)
+- Modifier les icônes "Obligatoire" des formulaires pour les rendre plus joli (10/02/2021)
+- Verrouiller l'accès à la page contact (10/02/2021)

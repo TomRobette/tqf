@@ -210,6 +210,7 @@ class StaticController extends AbstractController
     */
     public function contact(Request $request, \Swift_Mailer $mailer)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
     $form = $this->createForm(ContactType::class);
     if ($request->isMethod('POST')) {
         $form->handleRequest($request);
