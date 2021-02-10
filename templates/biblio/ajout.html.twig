@@ -16,32 +16,32 @@
 			{{ form_start(form) }}
 			<div class="form-group">
 				{{ form_label(form.oeuvre, 'L\'oeuvre associée au tirage', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.oeuvre) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.oeuvre) }}</span></small>
 				{{ form_widget(form.oeuvre, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.prixTotal, 'Le prix total du tirage', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.prixTotal) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.prixTotal) }}</span></small>
 				{{ form_widget(form.prixTotal, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.nbExemplaires, 'Le nombre d\'exemplaires du tirage', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.nbExemplaires) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.nbExemplaires) }}</span></small>
 				{{ form_widget(form.nbExemplaires, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.note, 'Note', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.note) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.note) }}</span></small>
 				{{ form_widget(form.note, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.type, 'Le type de tirage (Livres d\'artiste ou tirage de tête)', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.type) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.type) }}</span></small>
 				{{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.statut, 'La disponibilité du tirage', {'label_attr': {'class': 'font-weight-bold'}}) }}  
-				<small><span class="badge badge-info">{{ form_help(form.statut) }}</span></small>                  
+				<small><span class="text-info">{{ form_help(form.statut) }}</span></small>                  
                 {{ form_widget(form.statut, {'attr': {'class': 'form-control'}}) }}       
             </div>
 			<div class="form-group">

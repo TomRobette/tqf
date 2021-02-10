@@ -16,37 +16,37 @@
 			{{ form_start(form) }}
 			<div class="form-group">
 				{{ form_label(form.titre, 'Le titre de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.titre) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.titre) }}</span></small>
 				{{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.caractere, 'Le premier caractère EN MAJUSCULE du titre (nécessaire pour un tri logique)', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.caractere) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.caractere) }}</span></small>
 				{{ form_widget(form.caractere, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.noteStatut, 'Le statut de l\'oeuvre (Disponible, rupture de stock, chez nos partenaires, etc)', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.noteStatut) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.noteStatut) }}</span></small>
 				{{ form_widget(form.noteStatut, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.dimensions, 'Les dimensions de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.dimensions) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.dimensions) }}</span></small>
 				{{ form_widget(form.dimensions, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.isbn, 'L\'ISBN de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.dimensions) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.dimensions) }}</span></small>
 				{{ form_widget(form.isbn, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.nbPages, 'Le nombre de pages de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.nbPages) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.nbPages) }}</span></small>
 				{{ form_widget(form.nbPages, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.datePublication, 'Date de publication de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.datePublication) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.datePublication) }}</span></small>
 				{{ form_widget(form.datePublication, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
@@ -55,12 +55,12 @@
 			</div>
 			<div class="form-group">
 				{{ form_label(form.prix, 'Le prix de l\'oeuvre (0 si gratuite)', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.prix) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.prix) }}</span></small>
 				{{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.description, 'La description de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.description) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.description) }}</span></small>
 				{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
@@ -69,17 +69,17 @@
 			</div>
 			<div class="form-group">
 				{{ form_label(form.genre, 'Le genre de l\'oeuvre (Si le genre souhaité ne se trouve pas dans cette liste, le rajouter dans ajoutGenre)', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.genre) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.genre) }}</span></small>
 				{{ form_widget(form.genre, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.auteurs, 'Le ou les auteurs de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}
-				<small><span class="badge badge-info">{{ form_help(form.auteurs) }}</span></small>
+				<small><span class="text-info">{{ form_help(form.auteurs) }}</span></small>
 				{{ form_widget(form.auteurs, {'attr': {'class': 'form-control'}}) }}
 			</div>
 			<div class="form-group">
 				{{ form_label(form.statut, 'L\'oeuvre est-elle disponible à l\'achat en ligne sur ce site ?', {'label_attr': {'class': 'font-weight-bold'}}) }}  
-				<small><span class="badge badge-info">{{ form_help(form.statut) }}</span></small>                  
+				<small><span class="text-info">{{ form_help(form.statut) }}</span></small>                  
                 {{ form_widget(form.statut, {'attr': {'class': 'form-control'}}) }}       
             </div>
 			<div class="form-group">
@@ -88,7 +88,7 @@
             </div>
 			<div class="form-group">
 				{{ form_label(form.imageFile, 'La première de couverture de l\'oeuvre', {'label_attr': {'class': 'font-weight-bold'}}) }}  
-				<small><span class="badge badge-info">{{ form_help(form.imageFile) }}</span></small>                  
+				<small><span class="text-info">{{ form_help(form.imageFile) }}</span></small>                  
                 {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}       
             </div>
 			<div class="form-group mx-auto text-center">

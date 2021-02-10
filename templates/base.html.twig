@@ -249,12 +249,12 @@
 							<br>94270 Le Kremlin Bicêtre
 							<br>TEL : 01 45 15 19 70
 						</p>
-						<form class="form-inline my-2 my-lg-0">
+						{# <form class="form-inline my-2 my-lg-0">
 							<input class="form-control mr-sm-2" type="text" placeholder="Rechercher">
 							<button class="btn btn-secondary my-2 my-sm-0" type="submit">
 								<i class="fas fa-search"></i>
 							</button>
-						</form>
+						</form> #}
 						{% if is_granted('ROLE_ADMIN') %}
 							<h6>Vous êtes connecté en tant que
 								{{ app.user.email }}
@@ -278,10 +278,11 @@
 								<a href="{{path('apropos')}}">À propos</a>
 							</li>
 							<li>
-								<a href="{{path('contact')}}">Nous contacter</a>
+								{# <a href="{{path('contact')}}">Nous contacter</a> #}
+								<a href="mailto:TQF@wanadoo.fr">Nous contacter</a>
 							</li>
 							<li>
-								<a href="#">Mentions Légales</a>
+								<a href="{{path('mentionslegales')}}">Mentions Légales</a>
 							</li>
 						</ul>
 					</div>
@@ -319,7 +320,7 @@
 					<div class="col-md-4 col-sm-6 col-xs-12">
 						<ul class="social-icons">
 							<li>
-								<a class="facebook" href="#">
+								<a class="facebook" href="https://www.facebook.com/georges.monti.376">
 									<i class="fa fa-facebook"></i>
 								</a>
 							</li>

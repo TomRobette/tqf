@@ -23,7 +23,7 @@ class AccueilController extends AbstractController
 
         
         $now = new \DateTime();
-        $daysAgo = $now->sub(new \DateInterval('P30D'));
+        $daysAgo = $now->sub(new \DateInterval('P3M'));
         
 
         if($request->get('supp')!=null){

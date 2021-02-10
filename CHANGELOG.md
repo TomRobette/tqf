@@ -2,6 +2,21 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.4.1] - (09-02-2021)+(10-02-2021)
+
+### Ajouté
+- Ajout d'un système d'image modale à la vue pageOeuvre
+- Mise en place du lien vers la page facebook
+- Création de la vue et du contrôleur mentionslegales
+
+### Modifié
+- Amélioration des cards de bibliophilie
+- Changement du temps d'affichage de la page d'accueil à 3 mois
+- Changement du badge "obligatoire" des vues ajoutOeuvre, modifOeuvres, ajoutAuteur, modifAuteur, ajoutBiblio, modifBiblio, inscription, login, ajoutApropos, modifApropos, ajoutChronique et modifChronique
+
+### Réglé
+- Réglage du bug d'images identiques de biblio
+
 ## [v0.4] - (08-02-2021)
 
 ### Ajouté

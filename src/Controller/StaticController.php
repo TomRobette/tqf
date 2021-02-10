@@ -28,6 +28,15 @@ class StaticController extends AbstractController
     }
 
     /**
+     * @Route("/mentionslegales", name="mentionslegales")
+     */
+    public function mentionslegales()
+    {
+        return $this->render('static/mentionslegales.html.twig', [
+        ]);
+    }
+
+    /**
      * @Route("/apropos", name="apropos")
      */
     public function apropos()
