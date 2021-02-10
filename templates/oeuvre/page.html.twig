@@ -31,8 +31,10 @@
 			</a>
 					<br>
 					{% if oeuvre.statut == true and oeuvre.codePP is not null %}
-					<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="cmd" value="_s-xclick"> <input type="hidden" name="hosted_button_id" value="{{oeuvre.codePP}}"> <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne"> <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+					<form class="pr-3" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+						<div class="form-group">
+							<input type="hidden" name="cmd" value="_s-xclick"> <input type="hidden" name="hosted_button_id" value="{{oeuvre.codePP}}"> <input type="image" style="display: block; margin: 0 auto;" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne"> <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+  						</div>
 					</form>
 					{% endif %}
 				</div>
@@ -40,6 +42,7 @@
 					<div class="card-body">
 						<h3 class="card-title text-center">{{oeuvre.titre|capitalize}}</h3>
 								<p class="card-text">
+									Par 
 									{% set adder = "" %}
 									{% set cpt = 0 %}
 									{% for aut in oeuvre.auteurs %}
@@ -62,15 +65,15 @@
 										<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
 									</a>
 								{% endif %}	
-						<p class="card-text">{{oeuvre.genre.libelle}}</p>
-						<p class="card-text">{{oeuvre.noteStatut}}</p>
+						<p class="card-text">Genre : {{oeuvre.genre.libelle}}</p>
+						<p class="card-text">Disponibilité : {{oeuvre.noteStatut}}</p>
 						<p class="card-text">Dimensions : {{oeuvre.dimensions}}</p>
 						<p class="card-text">ISBN : {{oeuvre.isbn}}</p>
-						<p class="card-text">{{oeuvre.nbPages}} pages</p>
+						<p class="card-text">Longueur : {{oeuvre.nbPages}} pages</p>
 						<p class="card-text">Publié le
 							{{oeuvre.datePublication|date('d-m-Y')}}</p>
-						<p class="card-text">{{oeuvre.note}}</p>
-						<p class="card-text">{{oeuvre.prix|format_currency('EUR',{rounding_mode: 'floor'})}}</p>
+						<p class="card-text">Note particulière : {{oeuvre.note}}</p>
+						<h4 class="card-text text-info">{{oeuvre.prix|format_currency('EUR',{rounding_mode: 'floor'})}}</h4>
 						<p class="card-subtitle text-center">Description<p>
 						<p class="card-text">{{oeuvre.description|raw}}</p>
 

@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}| Demande Association
+{% endblock %}
+
+
+{% block body %}
+	{{parent()}}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<h1 class="text-center text-primary p-4">Les amis du temps qu'il fait</h1>
+		</div>
+		<div class="row">
+			<p class="text-center text-primary p-4">Une association des Amis du temps qu’il fait sera créée courant janvier 2021 dans le but de promouvoir les auteurs et artistes de la Maison, et de soutenir la diffusion de leurs œuvres auprès du public.</p>
+			<p class="text-center text-primary p-4">Si vous souhaitez être invité à y adhérer, être informé de ses activités et initiatives, veuillez remplir le formulaire ci-dessous.</p>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-8 bg-white p-4 m-0 text-dark">
+				{{ form_start(form) }}
+				<div class="form-group">
+					{{ form_label(form.prenom, 'Votre prénom', {'label_attr': {'class': 'font-weight-bold'}}) }}
+					<small>
+						<span class="text-info">{{ form_help(form.prenom) }}</span>
+					</small>
+					{{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.nom, 'Votre nom', {'label_attr': {'class': 'font-weight-bold'}}) }}
+					<small>
+						<span class="text-info">{{ form_help(form.nom) }}</span>
+					</small>
+					{{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.organisme, 'Le nom de votre organisme', {'label_attr': {'class': 'font-weight-bold'}}) }}
+					{{ form_widget(form.organisme, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.email, 'Votre adresse email', {'label_attr': {'class': 'font-weight-bold'}}) }}
+					<small>
+						<span class="text-info">{{ form_help(form.email) }}</span>
+					</small>
+					{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.adrCP, 'Votre code postal ou celui du siège de votre organisme', {'label_attr': {'class': 'font-weight-bold'}}) }}
+					<small>
+						<span class="text-info">{{ form_help(form.adrCP) }}</span>
+					</small>
+					{{ form_widget(form.adrCP, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.adrVille, 'La ville où vous habitez ou où siège votre organisme', {'label_attr': {'class': 'font-weight-bold'}}) }}
+					<small>
+						<span class="text-info">{{ form_help(form.adrVille) }}</span>
+					</small>
+					{{ form_widget(form.adrVille, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.adrRueno, 'Le numéro et la rue de votre domicile ou du siège de votre organisme (ex : 23 bis Avenue Victor Hugo)', {'label_attr': {'class': 'font-weight-bold'}}) }}
+					<small>
+						<span class="text-info">{{ form_help(form.adrRueno) }}</span>
+					</small>
+					{{ form_widget(form.adrRueno, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.commentaires, 'Vos commentaires', {'label_attr': {'class': 'font-weight-bold'}}) }}
+					{{ form_widget(form.commentaires, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="row justify-content-center">
+					<p class="text-center text-primary p-4">Vos données ne seront utilisés que dans le cadre de l'adhésion à l'association
+						<i>Les Amis du temps qu'il fait</i>.</p>
+				</div>
+				<div class="form-group mx-auto text-center">
+					{{ form_widget(form.send, { 'label': "Envoyer", 'attr': {'class': 'btn font-weight-bold bg-primary text-white mx-auto text-center'}}) }}
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

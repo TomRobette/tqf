@@ -147,6 +147,9 @@ class Oeuvre
         $this->biblios = new ArrayCollection();
         $this->image = new EmbeddedFile();
         $this->updatedAt = new \Datetime();
+        if($this->dateAjout==null){
+            $this->dateAjout = new \Datetime();
+        }
     }
 
     public function getId(): ?int

@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent()}}| Liste Demandes
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<h1 class="text-center text-primary p-4">Liste des demandes d'association</h1>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">Date d'ajout</th>
+					<th scope="col">Prénom</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Organisme</th>
+					<th scope="col">Email</th>
+					<th scope="col">Code Postal</th>
+					<th scope="col">Ville</th>
+					<th scope="col">Rue et numéro</th>
+					<th scope="col">Commentaires</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for ami in amis %}
+					<tr class="{{ cycle(['table-info', 'table-light'], loop.index0)}}">
+						<td>{{ami.dateAjout|date('Y-m-d H:i:s')}}</td>
+						<td>{{ami.prenom}}</td>
+						<td>{{ami.nom}}</td>
+						<td>{{ami.organisme}}</td>
+						<td>{{ami.email}}</td>
+						<td>{{ami.adrCP}}</td>
+						<td>{{ami.adrVille}}</td>
+						<td>{{ami.adrRueno}}</td>
+						<td>
+							<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="{{ami.commentaires}}">
+  								Voir
+							</button>
+						</td>
+						<td>
+							<a href="{{path('listeAmisTQF',{'supp':ami.id})}}">
+								<span class="material-icons text-dark" title="Supprimer la demande">delete</span>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+        </table>    
+	</div>
+{% endblock %}
+{% block javascripts %}
+{{parent()}}
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
+{% endblock %}

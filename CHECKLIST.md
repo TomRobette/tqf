@@ -5,17 +5,17 @@ Ici sont les élèments à faire ou finir
 ## À faire
 
 ### Obligatoire
-- Faire la page Les amis du temps qu'il fait (05/02/2021)
-- Modifier le temps d'accueil à choisir ce qui est affiché (05/02/2021)
+- Changer la taille du bouton principal (10/02/2021)
+- Placer les liens nav à la même ligne que le bouton principal (10/02/2021)
 
 ### Optionnel
 - Faire le système de recherche (10/02/2021)
-- Améliorer visuellement la pageOeuvre (05/02/2021)
 
 ## À terminer
 
 ### Obligatoire
 - Faire la page mentions légales (10/02/2021)
+- Modifier le temps d'accueil à choisir ce qui est affiché (10/02/2021)
 
 ### Optionnel
 - Corriger le textArea de contact (05/02/2021)
@@ -36,9 +36,12 @@ Ici sont les élèments à faire ou finir
 - Faire le JS pour afficher l'image des bibliophilies (10/02/2021)
 - Terminer le système de contact (10/02/2021)
 - Faire une page de contrôle des utilisateurs (10/02/2021)
+- Faire la page Les amis du temps qu'il fait (10/02/2021)
+- Faire la page liste des amis du temps qu'il fait (10/02/2021)
 
 ### Optionnel
 - Modifier la liste des auteurs en alpha (05/02/2021)
 - Mettre le lien facebook dans le bouton du footer (perso au début) (10/02/2021)
 - Modifier les icônes "Obligatoire" des formulaires pour les rendre plus joli (10/02/2021)
 - Verrouiller l'accès à la page contact (10/02/2021)
+- Améliorer visuellement la pageOeuvre (10/02/2021)

@@ -2,6 +2,30 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.4.3] - (10-02-2021)
+
+### Ajouté
+- Création de l'entité AmisTQF
+- Création du contrôleur ajoutAmisTQF
+- Création de la vue ajoutAmisTQF
+- Création du formulaire AjoutAmisTQFType
+- Ajout du contrôleur listeAmisTQF
+- Ajout de la vue listeAmisTQF
+- Mise en place du lien vers listeAmisTQF dans pageAdmin
+- Mise ne place du lien vers amistqf
+
+### Modifié
+- Ajout du champ "dateAjout" à l'entité AmisTQF
+- Ajout du constructeur de dateAjout dans l'entité Oeuvre
+- Ajout du constructeur de dateAjout dans l'entité AmisTQF
+- Légère refonte de la vue pageOeuvre
+- Nouveau déplacement du lien "les amis du temps qu'il fait" dans "autres" dans le footer
+- Déplacement des liens administateurs vers les liens rapides du footer
+
+### Réglé
+- Déverrouillage de la page amisTQF
+- Verrouillage de la page listeAmisTQF
+
 ## [v0.4.2] - (10-02-2021)
 
 ### Ajouté
