@@ -2,6 +2,17 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.4.4] - (11-02-2021)
+
+### Ajouté
+
+### Modifié
+- Changement du oe en &#339; (ou œ) dans les vues accueil, base, ajoutAuteur, modifAuteur, pageAuteur, ajoutBiblio, bibliophilie, modifBiblio, ajoutOeuvre, listeOeuvres, modifOeuvre, pageAdmin et parutions
+- Changement des 2 ans de parutions en 3 (comme noté dans la vue)
+- Légère refonte de la barre de navigation
+
+### Réglé
+
 ## [v0.4.3] - (10-02-2021)
 
 ### Ajouté

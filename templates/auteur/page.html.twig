@@ -41,7 +41,7 @@
 
 										<br>
 										{% if auteur.oeuvres|length > 0 %}
-											<p class="card-subtitle text-center">Oeuvres<p>
+											<p class="card-subtitle text-center">&#338;uvres<p>
 											<ul class="nav nav-pills flex-column">
 												{% for i in auteur.oeuvres %}
 													<li class="nav-item">
@@ -52,7 +52,7 @@
 										{% endif %}
 
                                         {% if auteur.oeuvresExt is not null %}
-							                <p class="card-subtitle text-center">Autres oeuvres<p>
+							                <p class="card-subtitle text-center">Autres &#338;uvres<p>
 									        <p class="card-text">{{auteur.oeuvresExt|raw}}</p>
 										{% endif %}
 

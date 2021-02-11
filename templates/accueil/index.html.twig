@@ -22,7 +22,7 @@
 	<div class="container-fluid">
 		<div class="row justify-content-center">
 			<h1 class="text-center text-primary p-4">
-				<a class="nav-link" href="{{path('listeOeuvres')}}">Nos dernières oeuvres</a>
+				<a class="nav-link" href="{{path('listeOeuvres')}}">Nos dernières 	&#338;uvres</a>
 			</h1>
 		</div>
 			{% if oeuvre|length > 0 %}
@@ -59,10 +59,10 @@
 										</p>
 										{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 											<a href="{{path('accueil',{'supp':oeuvre.id})}}">
-												<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
+												<span class="material-icons text-dark" title="Supprimer l'&#339;uvre de la base de données">delete</span>
 											</a>
 											<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
-												<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
+												<span class="material-icons text-dark" title="Modifier l'&#339;uvre dans la base de données">create</span>
 											</a>
 										{% endif %}
 									</div>
@@ -74,7 +74,7 @@
 					{% endfor %}
 				</div>
 			{% else %}	
-				<p class="text-center text-primary">Nous sommes navrés, mais aucune oeuvre n'a été ajoutée ces 30 derniers jours.</p>
+				<p class="text-center text-primary">Nous sommes navrés, mais aucune &#339;uvre n'a été ajoutée ces 30 derniers jours.</p>
 			{% endif %}
 	</div>
 {% endblock %}

@@ -61,10 +61,10 @@
 										</p>
 										{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 											<a href="{{path('listeOeuvres',{'supp':oeuvre.id})}}">
-												<span class="material-icons text-dark" title="Supprimer l'oeuvre de la base de données">delete</span>
+												<span class="material-icons text-dark" title="Supprimer l'&#339;uvre de la base de données">delete</span>
 											</a>
 											<a href="{{path('modifOeuvre',{'id':oeuvre.id})}}">
-												<span class="material-icons text-dark" title="Modifier l'oeuvre dans la base de données">create</span>
+												<span class="material-icons text-dark" title="Modifier l'&#339;uvre dans la base de données">create</span>
 											</a>
 										{% endif %}
 									</div>
@@ -77,7 +77,7 @@
 				</div>
 
 			{% else %}
-				<p class="text-center text-primary">Nous sommes navrés, mais aucune oeuvre ne se trouve
+				<p class="text-center text-primary">Nous sommes navrés, mais aucune &#339;uvre ne se trouve
 					{% if char is not null %}
 						dans les "{{char}}"
 					{% else %}

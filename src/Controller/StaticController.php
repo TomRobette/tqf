@@ -239,7 +239,7 @@ class StaticController extends AbstractController
 
         
         $now = new \DateTime();
-        $daysAgo = $now->sub(new \DateInterval('P2Y'));
+        $daysAgo = $now->sub(new \DateInterval('P3Y'));
         
 
         if($request->get('supp')!=null){

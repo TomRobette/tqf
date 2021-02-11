@@ -170,45 +170,50 @@
 					color: grey;
 					text-decoration: none;
 				}
+  				.navbar-brand {
+					font-size: 20px;
+					white-space:nowrap;
+				}
+
 			</style>
 		{% endblock %}
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark cc_cursor">
-			<a class="navbar-brand" href="{{ path('accueil')}}" alt="Accueil">Le temps qu'il fait</a>
+			<a class="navbar-brand mb-1" href="{{ path('accueil')}}" alt="Accueil">Le temps qu'il fait</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link text-light" href="{{ path('parutions')}}">
+					<li class="nav-item active p-auto">
+						<a class="nav-link text-light mx-3" href="{{ path('parutions')}}">
 							Parutions
 						</a>
 					</li>
-					<li class="nav-item active">
-						<a class="nav-link text-light" href="{{ path('listeAuteurs')}}">
+					<li class="nav-item active p-auto">
+						<a class="nav-link text-light mx-3" href="{{ path('listeAuteurs')}}">
 							Auteurs
 						</a>
 					</li>
-					<li class="nav-item active">
-						<a class="nav-link text-light" href="{{ path('listeOeuvres')}}">
-							Oeuvres
+					<li class="nav-item active p-auto">
+						<a class="nav-link text-light mx-3" href="{{ path('listeOeuvres')}}">
+							&#339;uvres
 						</a>
 					</li>
-					<li class="nav-item active">
-						<a class="nav-link text-light" href="{{ path('listeLivresPhoto')}}">
+					<li class="nav-item active p-auto">
+						<a class="nav-link text-light mx-3" href="{{ path('listeLivresPhoto')}}">
 							Livres de photographie
 						</a>
 					</li>
-					<li class="nav-item active">
-						<a class="nav-link text-light" href="{{ path('bibliophilie')}}">
+					<li class="nav-item active p-auto">
+						<a class="nav-link text-light mx-3" href="{{ path('bibliophilie')}}">
 							Bibliophilie
 						</a>
 					</li>
-					<li class="nav-item active">
-						<a class="nav-link text-light" href="{{path('chronique')}}">
+					<li class="nav-item active p-auto">
+						<a class="nav-link text-light mx-3" href="{{path('chronique')}}">
 							Chronique
 						</a>
 					</li>
