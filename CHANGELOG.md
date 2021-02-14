@@ -2,6 +2,13 @@ CHANGELOG
 =========
 Ici sont notés les ajouts, modifications et réglages de bugs selon les versions.
 
+## [v0.4.5] - (11-02-2021)
+
+### Ajouté
+
+### Modifié
+- Ajout des identifiants de l'hébergeur dans les mentions légales
+
 ## [v0.4.4] - (11-02-2021)
 
 ### Ajouté
